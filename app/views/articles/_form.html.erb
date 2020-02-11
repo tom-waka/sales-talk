@@ -1,0 +1,9 @@
+<%= form_with model: article do |f| %>
+  <%= f.label :title, "タイトル" %>
+  <%= f.text_field :title %>
+
+  <%= f.label :content, "内容" %>
+  <%= f.text_area :content%>
+
+  <%= f.submit %>
+<% end %>

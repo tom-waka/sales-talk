@@ -1,0 +1,59 @@
+$main-font: 'Kosugi', sans-serif;
+
+body{
+  margin:0 auto;
+}
+
+/* header */
+
+.page-header{
+  background-color: rgb(255, 164, 60);
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  .logo{
+    padding: 0.5rem;
+    margin-top: 0.5rem;
+  }
+  .main-nav{
+    display: flex;
+    padding-inline-start: unset;
+    margin-right: 0.5rem;
+    li{
+      list-style: none;
+      border-style: solid;
+      border-color: white;
+      padding: 0.2rem;
+      margin: 0.2rem;
+      border-radius:1.0rem;
+      .nav-item{
+        font-family: $main-font;
+        font-size: 0.9rem;
+        color: white;
+        text-decoration: none;
+        margin: 0.5rem;
+      }
+    }
+  } 
+}
+
+
+@media (max-width: 600px){
+  .page-header{
+    flex-direction: column;
+    align-items: center;
+    .logo{
+      margin-bottom: unset;
+      padding-bottom: unset;
+    }
+    .main-nav{
+      margin: 0rem 0rem 0.3rem 0rem;
+      li{
+        .nav-item{
+        font-size: 0.9rem;
+        margin: 0.3rem;
+        }
+      }
+    }   
+  }
+}

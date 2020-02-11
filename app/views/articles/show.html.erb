@@ -1,0 +1,6 @@
+<h1>記事詳細</h1>
+<p><%= @article.title %></p>
+<p><%= simple_format(h(@article.content), {}, sanitize: false, wrapper_tag: "div") %></p>
+<p><%= @article.created_at.to_s(:datetime) %></p>
+<p><%= link_to "編集", edit_article_path(@article) %></p>
+<p><%= link_to "削除", article_path(@article), method: :delete, data: {confirm: "記事を削除します。よろしいですか？"} %></p>
