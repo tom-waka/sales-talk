@@ -1,3 +1,5 @@
+<% provide(:title, "") %>
+
 <h1>投稿一覧</h1>
 <% @articles.each do |article| %>
   <%= link_to article.title, article %>

@@ -1,5 +1,6 @@
-<h1>記事の更新</h1>
+<% provide(:title, "記事編集") %>
 
+<h1>記事の編集</h1>
 <%= form_with model: @article, local: true do |f| %>
   <%= render partial: 'shared/error_messages', locals: { object: f.object } %>
 
