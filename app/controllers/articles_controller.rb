@@ -12,9 +12,13 @@ class ArticlesController < ApplicationController
   end
 
   def create
-    article = Article.new(article_params)
-    article.save
-    redirect_to root_url, notice: "記事を投稿しました。"
+    @article = Article.new(article_params)
+    
+    if @article.save
+      redirect_to root_url, notice: "記事を投稿しました。"
+    else 
+      render 'articles/new'
+    end
   end
 
   def edit
@@ -22,9 +26,13 @@ class ArticlesController < ApplicationController
   end
 
   def update
-    article = Article.find(params[:id])
-    article.update(article_params)
-    redirect_to root_url, notice: "記事を更新しました。"
+    @article = Article.find(params[:id])
+
+    if @article.update(article_params)
+      redirect_to root_url, notice: "記事を更新しました。"
+    else
+      render 'articles/edit'
+    end
   end
 
   def destroy
