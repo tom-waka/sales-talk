@@ -1,7 +1,19 @@
-$main-font: 'Kosugi', sans-serif;
-
 body{
   margin:0 auto;
+}
+
+/* mixins, variables, etc. */
+
+$main-font1: 'Kosugi', sans-serif;
+
+h1{
+  font-family: $main-font1;
+}
+
+@mixin box_sizing {
+  -moz-box-sizing:    border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing:         border-box;
 }
 
 /* header */
@@ -27,7 +39,7 @@ body{
       margin: 0.2rem;
       border-radius:1.0rem;
       .nav-item{
-        font-family: $main-font;
+        font-family: $main-font1;
         font-size: 0.9rem;
         color: white;
         text-decoration: none;
@@ -56,4 +68,14 @@ body{
       }
     }   
   }
+}
+
+/* miscellaneous */
+
+.debug_dump {
+  clear: both;
+  float: left;
+  width: 100%;
+  margin-top: 45px;
+  @include box_sizing;
 }

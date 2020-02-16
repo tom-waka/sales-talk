@@ -15,7 +15,7 @@ class ArticlesController < ApplicationController
     @article = Article.new(article_params)
     
     if @article.save
-      redirect_to root_url, notice: "記事を投稿しました。"
+      redirect_to @article, notice: "記事を投稿しました。"
     else 
       render 'articles/new'
     end
@@ -29,7 +29,7 @@ class ArticlesController < ApplicationController
     @article = Article.find(params[:id])
 
     if @article.update(article_params)
-      redirect_to root_url, notice: "記事を更新しました。"
+      redirect_to @article, notice: "記事を更新しました。"
     else
       render 'articles/edit'
     end

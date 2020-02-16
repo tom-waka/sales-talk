@@ -16,6 +16,16 @@ ja:
         content: 内容
         created_at: 作成日時
         updated_at: 更新日時
+      user: ユーザー
+    attributes:
+      user:
+        id: ID
+        name: アカウント名
+        email: メールアドレス
+        password: パスワード
+        password_confirmation: パスワード
+        created_at: 作成日時
+        updated_at: 更新日時
   date:
     abbr_day_names:
     - 日
@@ -120,7 +130,7 @@ ja:
     messages:
       accepted: を受諾してください
       blank: を入力してください
-      confirmation: と%{attribute}の入力が一致しません
+      confirmation: が再入力されたものと一致しません
       empty: を入力してください
       equal_to: は%{count}にしてください
       even: は偶数にしてください
@@ -138,7 +148,7 @@ ja:
       other_than: は%{count}以外の値にしてください
       present: は入力しないでください
       required: を入力してください
-      taken: はすでに存在します
+      taken: がすでに使用されています
       too_long: は%{count}文字以内で入力してください
       too_short: は%{count}文字以上で入力してください
       wrong_length: は%{count}文字で入力してください
