@@ -2,9 +2,15 @@
   <div class="page-header">
     <%= link_to image_tag('logo.png', size: '250x40' , alt:'logo', class: "logo") , '/' %> 
       <ul class="main-nav">
-        <li><%= link_to "新規投稿"  , new_article_path , class: "nav-item" %></li>
-        <li><%= link_to "マイページ", '#' , class: "nav-item" %></li>
-        <li><%= link_to "ログアウト", '#' , class: "nav-item" %></li>
+        <% if logged_in? %>
+          <li><%= link_to "新規投稿"  , new_article_path , class: "nav-item" %></li>
+          <li><%= link_to "マイページ", user_path(@current_user) , class: "nav-item" %></li>
+          <li><%= link_to "ログアウト", logout_path , method: :delete , data: {confirm: "ログアウトしますか？"}, class: "nav-item" %></li>
+        <% else %>
+          <li><%= link_to "ユーザー登録"  , signup_path , class: "nav-item" %></li>
+          <li><%= link_to "ログイン", login_path , class: "nav-item" %></li>
+          <li><%= link_to "SALES TALKとは", '#' , class: "nav-item" %></li>
+        <% end %>
       </ul>
   </div>
 </div>
