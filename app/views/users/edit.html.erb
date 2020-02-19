@@ -1,2 +1,20 @@
-<h1>Users#edit</h1>
-<p>Find me in app/views/users/edit.html.erb</p>
+<% provide(:title, "ユーザー情報の編集") %>
+
+<h1>ユーザー情報の編集</h1>
+<%= form_with model: @user, local: true do |f| %>
+  <%= render partial: 'shared/error_messages', locals: { object: f.object } %>
+
+  <%= f.label :name, "アカウント名" %>
+  <%= f.text_field :name %>
+
+  <%= f.label :email, "メールアドレス" %>
+  <%= f.text_field :email %>
+
+  <%= f.label :password, "パスワード（6文字以上）" %>
+  <%= f.password_field :password %>
+
+  <%= f.label :password_confirmation, "パスワードの再入力" %>
+  <%= f.password_field :password_confirmation %>
+
+  <%= f.submit "更新する" %>
+<% end %>
