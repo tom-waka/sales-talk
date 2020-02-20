@@ -1,5 +1,6 @@
 class ArticlesController < ApplicationController
-  
+  before_action :logged_in_user, only:[:new, :create, :edit, :update, :destroy]
+
   def index
     @articles = Article.order(created_at: :desc)
   end
@@ -9,11 +10,11 @@ class ArticlesController < ApplicationController
   end
 
   def new
-    @article = Article.new
+    @article = current_user.articles.build if logged_in?
   end
 
   def create
-    @article = Article.new(article_params)
+    @article = current_user.articles.build(article_params)
     
     if @article.save
       redirect_to @article, notice: "記事を投稿しました。"
