@@ -1,0 +1,6 @@
+<% @users.each do |user| %>
+  <%= link_to user.name, user %>
+  <% if !user.admin? %>
+    <%= link_to "削除", user_path(user), method: :delete, data: {confirm: "ユーザー「#{user.name}」を削除します。よろしいですか？"} %>
+  <% end %>
+<% end %>
