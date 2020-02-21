@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-  before_action :logged_in_user, only:[:edit, :update]
-  before_action :correct_user,   only:[:edit, :update]
+  before_action :logged_in_user, only:[:edit, :update, :destroy]
+  before_action :correct_user,   only:[:edit, :update, :destroy]
   before_action :admin_check,    only:[:index]
 
   def index
@@ -41,7 +41,12 @@ class UsersController < ApplicationController
   def destroy
     user = User.find(params[:id])
     user.destroy
-    redirect_to users_path, notice: "ユーザー「#{user.name}」を削除しました。"
+    flash[:notice] = "ユーザー「#{user.name}」を削除しました。"
+    if logged_in?
+      redirect_to users_path
+    else
+      redirect_to root_url
+    end
   end
 
   private
@@ -52,7 +57,7 @@ class UsersController < ApplicationController
 
     def correct_user
       @user = User.find(params[:id])
-      redirect_to root_url unless current_user?(@user)
+      redirect_to root_url unless current_user?(@user) || current_user.admin?
     end
 
     def admin_check
