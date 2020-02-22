@@ -1,14 +1,17 @@
 <% provide(:title, "記事編集") %>
 
-<h1>記事の編集</h1>
-<%= form_with model: @article, local: true do |f| %>
-  <%= render partial: 'shared/error_messages', locals: { object: f.object } %>
+<h2>記事の編集</h2>
 
-  <%= f.label :title, "タイトル" %>
-  <%= f.text_field :title %>
+<div class="container">
+  <%= form_with model: @article, local: true do |f| %>
+    <p><%= render partial: 'shared/error_messages', locals: { object: f.object } %></p>
 
-  <%= f.label :content, "内容" %>
-  <%= f.text_area :content%>
+    <p><%= f.label :title, "タイトル（５０文字以内）" %></p>
+    <p><%= f.text_area :title,  rows: 2 %></p>
 
-  <%= f.submit "更新する" %>
-<% end %>
+    <p><%= f.label :content, "好きなモノについて紹介してください！" %></p>
+    <p><%= f.text_area :content,  rows: 20 %></p>
+
+    <p><%= f.submit "更新する", class: "btn" %></p>
+  <% end %>
+</div>

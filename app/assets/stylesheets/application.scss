@@ -10,11 +10,23 @@ $main-font1: 'Kosugi', sans-serif;
 $main-font2: 'Noto Sans JP', ;
 $main-color1: rgb(255, 164, 60);
 $main-color2: white;
+$main-color3: rgba(255, 164, 60, 0.945);
 
 @mixin heading{
   font-family: $main-font2;
   text-align: center;
   margin: 1.5rem 1.0rem;
+}
+
+@mixin article_form{
+  display: inline-block;
+  border-style: solid ;
+  border-color: $main-color3;
+  border-radius: 0.3rem;
+  border-width: 0.25rem;
+  padding: 0.5rem;
+  margin-bottom: 2.0rem;
+  width: 95%;
 }
 
 h1{
@@ -31,6 +43,44 @@ h3{
 
 h4{
   @include heading;
+}
+
+.btn{
+  display       : inline-block;
+  border-radius : 0.8rem;
+  font-family   : $main-font2;          
+  font-size     : 1.2rem;        
+  text-align    : center;     
+  cursor        : pointer;     
+  padding       : 9px 13px;   
+  background    : $main-color3;  
+  color         : $main-color2;
+  line-height   : 1rem;
+  transition    : .3s;
+  box-shadow    : 2px 2px #666666;
+  border        : 2px solid $main-color3;
+  &:hover{
+    box-shadow    : none;
+    color         : $main-color3;
+    background    : $main-color2;
+  }
+}
+
+.error{
+  color: rgba(255, 0, 0, 0.623);
+  border-bottom: solid;
+  width: 95%;
+  margin: 1rem auto;
+  list-style: none;
+  text-align: center;
+  max-width: 450px;
+}
+
+.notification{
+  margin-top: 2.0rem;
+  text-align: center;
+  font-weight: bold;
+  color: rgb(0, 47, 255);
 }
 
 @mixin box_sizing {
@@ -78,7 +128,7 @@ h4{
         font-size: 0.9rem;
         color: $main-color2;
         text-decoration: none;
-        padding: 0.35rem 0 0.45rem 0;
+        padding: 0.35rem 0 0.42rem 0;
         margin: 0.5rem;
         &:hover {
           color: $main-color1;
@@ -89,28 +139,12 @@ h4{
   } 
 }
 
-
-@media (max-width: 615px){
-  .page-header{
-    flex-direction: column;
-    align-items: center;
-    .logo{
-      margin-top: unset;
-      margin-bottom: unset;
-      padding-bottom: unset;
-    }
-    .main-nav{
-      margin: 0rem 0rem 0.3rem 0rem;
-    }   
-  }
-}
-
 /* articles index */
 
 .grid{
   display: grid;
   gap: 1.0rem;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   margin: 6% 0.9rem 0.6rem 0.9rem ;
 }
 
@@ -132,17 +166,76 @@ h4{
 /* articles show */
 
 .container{
-  margin: 0.5rem 0.7rem;
+  max-width: 615px;
+  margin: 0.5rem auto;
   .content{
     border-style: solid;
     border-color: $main-color1;
     border-radius: 0.3rem;
+    font-size: 1.1rem;
     padding: 0.5rem;
+    text-align: left;
   }
   .option{
     text-align: right;
   }
 }
+
+/* articles_form */
+
+.container{
+  text-align: center;
+  label{
+    background-color: $main-color3;
+    color: white;
+    font-weight: bold;
+    border-radius: 0.2rem;
+    padding: 0.4rem;
+  }
+  #article_title {
+    @include article_form;
+    font-family: $main-font2;
+    font-size: 1.2rem;
+    text-align: center;
+  } 
+  #article_content {
+    @include article_form;
+  } 
+}
+
+/* レスポンシブ */
+
+@media (max-width: 615px){
+  .page-header{
+    flex-direction: column;
+    align-items: center;
+    .logo{
+      margin-top: unset;
+      margin-bottom: unset;
+      padding-bottom: unset;
+    }
+    .main-nav{
+      margin: 0rem 0rem 0.3rem 0rem;
+    }   
+  }
+
+  .container{
+    min-width: 300px;
+    margin: 0.5rem 0.5rem;
+    
+    text-align: center;
+    .content{
+      font-size: 1.0rem;
+    }
+    #article_title {
+      font-size: 1.0rem;
+    } 
+    #article_content {
+      font-size: 1.0rem;
+    } 
+  }
+}
+
 
 /* miscellaneous */
 
