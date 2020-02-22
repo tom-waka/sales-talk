@@ -1,13 +1,36 @@
 body{
   margin:0 auto;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
 }
 
-/* mixins, variables, etc. */
+/* 共通・汎用 */
 
 $main-font1: 'Kosugi', sans-serif;
+$main-font2: 'Noto Sans JP', ;
+$main-color1: rgb(255, 164, 60);
+$main-color2: white;
+
+@mixin heading{
+  font-family: $main-font2;
+  text-align: center;
+  margin: 1.5rem 1.0rem;
+}
 
 h1{
-  font-family: $main-font1;
+  @include heading;
+}
+
+h2{
+  @include heading;
+}
+
+h3{
+  @include heading;
+}
+
+h4{
+  @include heading;
 }
 
 @mixin box_sizing {
@@ -19,54 +42,105 @@ h1{
 /* header */
 
 .page-header{
-  background-color: rgb(255, 164, 60);
+  background-color: $main-color1;
   width: 100%;
   display: flex;
   justify-content: space-between;
   .logo{
+    height: 3.5rem;
+    width: 16rem;
     padding: 0.5rem;
     margin-top: 0.5rem;
+    transition: filter 0.2s;
+    &:hover {
+      filter: drop-shadow(3px 3px 3px rgba(104, 102, 102, 0.6));
+    }
   }
   .main-nav{
     display: flex;
     padding-inline-start: unset;
-    margin-right: 0.5rem;
+    margin-top: 1.2rem;
+    margin-right: 1.0rem;
+    height: fit-content;
     li{
       list-style: none;
       border-style: solid;
-      border-color: white;
-      padding: 0.2rem;
+      border-width: 0.2rem;
+      border-color: $main-color2;
+      padding: 0.0rem;
       margin: 0.2rem;
-      border-radius:1.0rem;
+      border-radius:0.8rem;
+      &:hover {
+        background-color: $main-color2;
+      }
       .nav-item{
         font-family: $main-font1;
         font-size: 0.9rem;
-        color: white;
+        color: $main-color2;
         text-decoration: none;
+        padding: 0.35rem 0 0.45rem 0;
         margin: 0.5rem;
+        &:hover {
+          color: $main-color1;
+          background-color: $main-color2;
+        }
       }
     }
   } 
 }
 
 
-@media (max-width: 600px){
+@media (max-width: 615px){
   .page-header{
     flex-direction: column;
     align-items: center;
     .logo{
+      margin-top: unset;
       margin-bottom: unset;
       padding-bottom: unset;
     }
     .main-nav{
       margin: 0rem 0rem 0.3rem 0rem;
-      li{
-        .nav-item{
-        font-size: 0.9rem;
-        margin: 0.3rem;
-        }
-      }
     }   
+  }
+}
+
+/* articles index */
+
+.grid{
+  display: grid;
+  gap: 1.0rem;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  margin: 6% 0.9rem 0.6rem 0.9rem ;
+}
+
+.article-item{
+  height: 15rem;
+  border-style: solid;
+  border-color: $main-color1;
+  border-radius: 0.3rem;
+  padding: 0.3rem;
+  .title{
+    text-align: center;
+    text-decoration: none;
+  }
+  .option{
+    text-align: right;
+  }
+}
+  
+/* articles show */
+
+.container{
+  margin: 0.5rem 0.7rem;
+  .content{
+    border-style: solid;
+    border-color: $main-color1;
+    border-radius: 0.3rem;
+    padding: 0.5rem;
+  }
+  .option{
+    text-align: right;
   }
 }
 

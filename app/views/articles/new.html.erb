@@ -5,10 +5,10 @@
   <%= render partial: 'shared/error_messages', locals: { object: f.object } %>
 
   <%= f.label :title, "タイトル" %>
-  <%= f.text_field :title %>
+  <%= f.text_area :title,  rows: 2 %>
 
   <%= f.label :content, "内容" %>
-  <%= f.text_area :content%>
+  <%= f.text_area :content %>
 
   <%= f.submit "投稿する" %>
 <% end %>
