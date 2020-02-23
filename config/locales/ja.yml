@@ -20,7 +20,7 @@ ja:
     attributes:
       user:
         id: ID
-        name: アカウント名
+        name: ユーザー名
         email: メールアドレス
         password: パスワード
         password_confirmation: パスワード
