@@ -209,8 +209,8 @@ h4{
     background-color: $main-color3;
     color: white;
     font-weight: bold;
-    border-radius: 0.2rem;
-    padding: 0.4rem;
+    border-radius: 0.2rem 0.2rem 0 0;
+    padding: 0.35rem;
   }
   #article_title {
     @include basic_form;
@@ -241,6 +241,16 @@ h4{
     }
     .main-nav{
       margin: 0rem 0rem 0.3rem 0rem;
+      li{
+        .nav-item{
+          font-family: $main-font1;
+          font-size: 0.9rem;
+          color: $main-color2;
+          text-decoration: none;
+          padding: 0.2rem 0;
+          margin: 0.5rem;
+        }
+      }
     }   
   }
 
