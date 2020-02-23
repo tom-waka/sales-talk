@@ -1,7 +1,7 @@
 <% provide(:title, "記事詳細") %>
 
 <div class="container">
-  <h3><%= safe_join(@article.title.split("\n"),tag(:br)) %></h3>
+  <p class="title"><%= safe_join(@article.title.split("\n"),tag(:br)) %></p>
   <p><%= "#{@article.user.name}の投稿" %></p>
   <div class="content">
     <%= safe_join(@article.content.split("\n"),tag(:br)) %>

@@ -15,7 +15,8 @@ $main-color3: rgba(255, 164, 60, 0.945);
 @mixin heading{
   font-family: $main-font2;
   text-align: center;
-  margin: 1.5rem 1.0rem;
+  margin: 1.5rem 0;
+  padding: 0.5rem;
 }
 
 @mixin article_form{
@@ -23,10 +24,10 @@ $main-color3: rgba(255, 164, 60, 0.945);
   border-style: solid ;
   border-color: $main-color3;
   border-radius: 0.3rem;
-  border-width: 0.25rem;
+  border-width: 0.15rem;
   padding: 0.5rem;
   margin-bottom: 2.0rem;
-  width: 95%;
+  width: 100%;
 }
 
 h1{
@@ -128,7 +129,7 @@ h4{
         font-size: 0.9rem;
         color: $main-color2;
         text-decoration: none;
-        padding: 0.35rem 0 0.42rem 0;
+        padding: 0.35rem 0 0.41rem 0;
         margin: 0.5rem;
         &:hover {
           color: $main-color1;
@@ -168,11 +169,17 @@ h4{
 .container{
   max-width: 615px;
   margin: 0.5rem auto;
+  .title{
+    text-align: center;
+    margin: 1.5rem 0;
+    padding: 0.5rem;
+    font-weight: bold;
+  }
   .content{
     border-style: solid;
     border-color: $main-color1;
     border-radius: 0.3rem;
-    font-size: 1.1rem;
+    border-width: 0.15rem;
     padding: 0.5rem;
     text-align: left;
   }
@@ -194,9 +201,8 @@ h4{
   }
   #article_title {
     @include article_form;
-    font-family: $main-font2;
-    font-size: 1.2rem;
     text-align: center;
+    font-weight: bold;
   } 
   #article_content {
     @include article_form;
@@ -205,7 +211,7 @@ h4{
 
 /* レスポンシブ */
 
-@media (max-width: 615px){
+@media (max-width: 620px){
   .page-header{
     flex-direction: column;
     align-items: center;
@@ -221,18 +227,7 @@ h4{
 
   .container{
     min-width: 300px;
-    margin: 0.5rem 0.5rem;
-    
-    text-align: center;
-    .content{
-      font-size: 1.0rem;
-    }
-    #article_title {
-      font-size: 1.0rem;
-    } 
-    #article_content {
-      font-size: 1.0rem;
-    } 
+    margin: 0.5rem;
   }
 }
 

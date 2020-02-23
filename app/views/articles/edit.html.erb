@@ -7,10 +7,10 @@
     <p><%= render partial: 'shared/error_messages', locals: { object: f.object } %></p>
 
     <p><%= f.label :title, "タイトル（５０文字以内）" %></p>
-    <p><%= f.text_area :title,  rows: 2 %></p>
+    <%= f.text_area :title,  rows: 2 %>
 
     <p><%= f.label :content, "好きなモノについて紹介してください！" %></p>
-    <p><%= f.text_area :content,  rows: 20 %></p>
+    <%= f.text_area :content,  rows: 20 %>
 
     <p><%= f.submit "更新する", class: "btn" %></p>
   <% end %>
