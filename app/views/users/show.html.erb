@@ -1,6 +1,7 @@
 <% provide(:title, @user.name) %>
 
-<h1>ユーザー情報</h1>
+<h2>ユーザー情報</h2>
+
 <%= @user.name %>, <%= @user.email %>
 <% if (current_user?(@user) && !current_user.admin?) || (!current_user?(@user) && current_user.admin?) %>
   <%= link_to "編集", edit_user_path(current_user) %>
