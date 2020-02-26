@@ -25,9 +25,9 @@ $drop-shadow: drop-shadow(3px 3px 3px rgba(78, 78, 78, 0.5));
 
 @mixin basic_grid{
   display: grid;
-  gap: 1.0rem;
+  gap: 3rem;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  margin: 2rem 2rem 0.6rem 2rem;
+  margin: 2rem 3.5rem 1rem;
 }
 
 @mixin basic_form{
@@ -46,6 +46,12 @@ $drop-shadow: drop-shadow(3px 3px 3px rgba(78, 78, 78, 0.5));
 @mixin users_form{
   @include basic_form;
   text-align: center;
+}
+
+@mixin basic_icon{
+  border-style: solid;
+  border-color: rgba(158, 158, 158, 0.603);
+  border-radius: 1rem;
 }
 
 @mixin basic_btn{
@@ -190,18 +196,26 @@ h4{
 }
 
 .article-item{
+  position:relative;
   height: 15rem;
   border-style: solid;
   border-color: $main-color1;
   border-radius: 0.3rem;
-  padding: 0.3rem;
+  padding: 1rem 0.5rem 0.5rem;
   box-shadow: $basic-shadow;
-  .title{
-    text-align: center;
-    text-decoration: none;
+  .profile-icon{
+    @include basic_icon;
+    width: 4em;
+    height: 4em;
+  }
+  .user-name{
+    position:absolute;
+    font-weight: bold;
   }
   .option{
-    text-align: right;
+    position:absolute;
+    right: 0.5em;
+    bottom: 1.0em;
   }
 }
   
@@ -241,9 +255,7 @@ h4{
     border-width: 0.1rem;
     border-color: rgba(151, 151, 151, 0.116);
     .profile-icon{
-      border-style: solid;
-      border-color: rgba(158, 158, 158, 0.603);
-      border-radius: 1rem;
+      @include basic_icon;
       width: 10rem;
       height: 10rem;
     }
@@ -310,12 +322,14 @@ h4{
   .container{
     margin: 0.5rem 1rem;
   }
+
+  .grid{
+    gap: 2rem;
+    margin: 2rem 1.5rem 1rem;
+  }
 }
 
 @media (max-width: 350px){
-  .grid{
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  }
   .page-header{
     .main-nav{
       margin: 0rem 0rem 0.4rem 0rem;
@@ -326,6 +340,11 @@ h4{
         }
       }
     }   
+  }
+
+  .grid{
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    margin: 2rem 1.3rem 1rem;
   }
 
   .container label{

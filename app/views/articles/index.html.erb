@@ -5,7 +5,15 @@
 <div class="wrapper grid">
   <% @articles.each do |article| %>
     <div class="article-item">
-      <p class="title"><%= link_to article.title, article %></p>
+      <p><%= link_to article.title, article %></p>
+
+      <% if article.user.picture? %>
+        <%= image_tag article.user.picture.url, class: "profile-icon" %>
+      <% else %>
+        <%= image_tag 'default_icon.png', class: "profile-icon" %>
+      <% end %>
+
+      <div class="user-name"><%= "営業担当：#{article.user.name}" %></div>
       <p class="option">
         <%= "投稿日：#{article.created_at.to_s(:datetime)}" %>
         <% if logged_in? %>
