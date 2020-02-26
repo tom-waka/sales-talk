@@ -14,11 +14,20 @@ $main-font2: 'Noto Sans JP', ;
 $main-color1: rgb(255, 164, 60);
 $main-color2: white;
 $main-color3: rgba(255, 164, 60, 0.904);
+$basic-shadow: 3px 3px 3px rgba(78, 78, 78, 0.5);
+$drop-shadow: drop-shadow(3px 3px 3px rgba(78, 78, 78, 0.5));
 
 @mixin basic_container{
   max-width: 615px;
   margin: 0.5rem auto;
   text-align: center;
+}
+
+@mixin basic_grid{
+  display: grid;
+  gap: 1.0rem;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  margin: 2rem 2rem 0.6rem 2rem;
 }
 
 @mixin basic_form{
@@ -31,6 +40,7 @@ $main-color3: rgba(255, 164, 60, 0.904);
   margin-top: 0.5rem;
   margin-bottom: 2.5rem;
   width: 100%;
+  box-shadow    : $basic-shadow;
 }
 
 @mixin users_form{
@@ -38,11 +48,48 @@ $main-color3: rgba(255, 164, 60, 0.904);
   text-align: center;
 }
 
+@mixin basic_btn{
+  display       : inline-block;
+  border-radius : 0.8rem;
+  font-family   : $main-font2;   
+  font-size     : 1.2rem;            
+  text-align    : center; 
+  text-decoration: none;    
+  cursor        : pointer;     
+  padding       : 0.5rem 0.8rem;
+  margin        : 1rem 0 2rem;
+  background    : $main-color3;  
+  color         : $main-color2;
+  line-height   : 1rem;
+  transition    : 0.3s;
+  box-shadow    : $basic-shadow;
+  border        : 2px solid $main-color3;
+  &:hover{
+    box-shadow    : none;
+    color         : $main-color3;
+    background    : $main-color2;
+  }
+}
+
+.btn{
+  @include basic_btn;
+}
+
+.btn-danger{
+  @include basic_btn;
+  background-color:rgba(255, 0, 0, 0.849);
+  border-color: rgba(255, 0, 0, 0.849);
+  margin-top: 3rem;
+  &:hover{
+    color: rgba(255, 0, 0, 0.849);
+  }
+}
 @mixin heading{
   font-family: $main-font2;
   text-align: center;
-  margin: 1.5rem 0;
-  padding: 0.5rem;
+  margin: 2rem auto 3rem;
+  padding: 0.5rem 1rem;
+  filter: $drop-shadow;
 }
 
 h1{
@@ -51,6 +98,9 @@ h1{
 
 h2{
   @include heading;
+  width: fit-content;
+  border-bottom: solid;
+  border-color: $main-color3;
 }
 
 h3{
@@ -59,28 +109,6 @@ h3{
 
 h4{
   @include heading;
-}
-
-.btn{
-  display       : inline-block;
-  border-radius : 0.8rem;
-  font-family   : $main-font2;          
-  font-size     : 1.2rem;        
-  text-align    : center;     
-  cursor        : pointer;     
-  padding       : 0.5rem 0.8rem;
-  margin-bottom : 1rem;
-  background    : $main-color3;  
-  color         : $main-color2;
-  line-height   : 1rem;
-  transition    : 0.3s;
-  box-shadow    : 2px 2px #666666;
-  border        : 2px solid $main-color3;
-  &:hover{
-    box-shadow    : none;
-    color         : $main-color3;
-    background    : $main-color2;
-  }
 }
 
 .error{
@@ -124,7 +152,7 @@ h4{
     margin-top: 0.5rem;
     transition: filter 0.2s;
     &:hover {
-      filter: drop-shadow(3px 3px 3px rgba(104, 102, 102, 0.6));
+      filter: $drop-shadow;
     }
   }
   .main-nav{
@@ -158,10 +186,7 @@ h4{
 /* articles index */
 
 .grid{
-  display: grid;
-  gap: 1.0rem;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  margin: 2rem 2rem 0.6rem 2rem;
+  @include basic_grid;
 }
 
 .article-item{
@@ -170,6 +195,7 @@ h4{
   border-color: $main-color1;
   border-radius: 0.3rem;
   padding: 0.3rem;
+  box-shadow: $basic-shadow;
   .title{
     text-align: center;
     text-decoration: none;
@@ -196,11 +222,41 @@ h4{
     border-width: 0.15rem;
     padding: 0.5rem;
     text-align: left;
+    box-shadow: $basic-shadow;
   }
   .option{
     text-align: right;
   }
 }
+
+/* users show */
+
+  .user_info{
+    filter: $drop-shadow;
+    padding: 2rem 2rem 0;
+    margin: 3rem 0;
+    background-color: rgba(226, 226, 226, 0.116);
+    border-radius: 1rem;
+    border-style: solid;
+    border-width: 0.1rem;
+    border-color: rgba(151, 151, 151, 0.116);
+    .profile-icon{
+      border-style: solid;
+      border-color: rgba(158, 158, 158, 0.603);
+      border-radius: 1rem;
+      width: 10rem;
+      height: 10rem;
+    }
+    .user-name{
+      font-family: $main-color2;
+      font-size: 1.5rem;
+    }
+  }
+  
+  .grid{
+    @include basic_grid;
+  }
+
 
 /* form */
 
@@ -211,7 +267,8 @@ h4{
     color: $main-color2;
     font-weight: bold;
     border-radius: 0.3rem;
-    padding: 0.5rem;
+    padding: 0.3rem;
+    box-shadow    : $basic-shadow;
   }
   #article_title {
     @include basic_form;
@@ -269,6 +326,10 @@ h4{
         }
       }
     }   
+  }
+
+  .container label{
+    font-size: 0.9rem;
   }
 }
 
