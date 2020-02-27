@@ -6,7 +6,7 @@
   <%= form_with model: @user, local: true do |f| %>
     <p><%= render partial: 'shared/error_messages', locals: { object: f.object } %></p>
 
-    <p><%= f.label :name, "ユーザー名" %></p>
+    <div class="image_btn"><p><%= f.label :name, "ユーザー名" %></p></div>
     <%= f.text_field :name, placeholder: 'ユーザー名を入力' %>
 
     <p><%= f.label :email, "メールアドレス" %></p>

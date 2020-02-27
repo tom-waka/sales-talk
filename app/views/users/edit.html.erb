@@ -2,22 +2,51 @@
 
 <h2>ユーザー情報の編集</h2>
 
-<%= form_with model: @user, local: true do |f| %>
-  <%= render partial: 'shared/error_messages', locals: { object: f.object } %>
+<div class="container">
+  <%= form_with model: @user, local: true do |f| %>
+    <p><%= render partial: 'shared/error_messages', locals: { object: f.object } %></p>
 
-  <%= f.file_field :picture, accept: 'image/jpeg,image/gif,image/png' %>
+    <div class="container">
+      <div class="user_info">
+        <% if @user.picture? %>
+          <%= image_tag @user.picture.url, id: :img_prev, class: "user-icon" %>
+        <% else %>
+          <%= image_tag 'default_icon.png', id: :img_prev, class: "user-icon" %>
+        <% end %>
 
-  <%= f.label :name, "アカウント名" %>
-  <%= f.text_field :name %>
+        <p><%= f.label :picture, "アイコンを設定する", {class: 'choose_icon'} %></p>
+        <%= f.file_field :picture, id: :user_picture, accept: 'image/jpeg,image/gif,image/png' %>
+        <script type="text/javascript">
+          $(function() {
+            function readURL(input) {
+                if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+            $('#img_prev').attr('src', e.target.result);
+                }
+                reader.readAsDataURL(input.files[0]);
+                }
+            }
+            $("#user_picture").change(function(){
+                readURL(this);
+            });
+          });
+        </script>
+      </div>
+    </div>
 
-  <%= f.label :email, "メールアドレス" %>
-  <%= f.text_field :email %>
+    <p><%= f.label :name, "ユーザー名" %></p>
+    <%= f.text_field :name, placeholder: 'ユーザー名を入力' %>
 
-  <%= f.label :password, "パスワード（6文字以上）" %>
-  <%= f.password_field :password %>
+    <p><%= f.label :email, "メールアドレス" %></p>
+    <%= f.text_field :email, placeholder: 'メールアドレスを入力' %>
 
-  <%= f.label :password_confirmation, "パスワードの再入力" %>
-  <%= f.password_field :password_confirmation %>
+    <p><%= f.label :password, "パスワード（6文字以上）" %></p>
+    <%= f.password_field :password, placeholder: 'パスワードを入力' %>
 
-  <%= f.submit "更新する" %>
-<% end %>
+    <p><%= f.label :password_confirmation, "パスワードの再入力" %></p>
+    <%= f.password_field :password_confirmation, placeholder: 'もう一度パスワードを入力' %>
+
+    <p><%= f.submit "更新する", class: "btn" %></p>
+  <% end %>
+</div>

@@ -63,7 +63,7 @@ $drop-shadow: drop-shadow(3px 3px 3px rgba(78, 78, 78, 0.5));
   text-decoration: none;    
   cursor        : pointer;     
   padding       : 0.5rem 0.8rem;
-  margin        : 1rem 0 2rem;
+  margin        : 1rem 0;
   background    : $main-color3;  
   color         : $main-color2;
   line-height   : 1rem;
@@ -180,6 +180,7 @@ h4{
         margin: unset;
         border-style: solid;
         border-radius: 1.0rem;
+        transition    : 0.3s;
         &:hover {
           color: $main-color1;
           background-color: $main-color2;
@@ -247,8 +248,8 @@ h4{
 
   .user_info{
     filter: $drop-shadow;
-    padding: 2rem 2rem 0;
-    margin: 3rem 0;
+    padding: 2rem;
+    margin: 3rem 0 1rem;
     background-color: rgba(226, 226, 226, 0.116);
     border-radius: 1rem;
     border-style: solid;
@@ -258,6 +259,7 @@ h4{
       @include basic_icon;
       width: 10rem;
       height: 10rem;
+      margin-bottom: 1rem;
     }
     .user-name{
       font-family: $main-color2;
@@ -275,12 +277,16 @@ h4{
 .container{
   @include basic_container;
   label{
-    background-color: $main-color3;
-    color: $main-color2;
+    background-color: $main-color2;
+    color: $main-color3;
     font-weight: bold;
-    border-radius: 0.3rem;
+    border-left: solid;
+    border-right: solid;
+    border-color: $main-color3;
+    border-width: 0.2rem;
+    border-radius: 0rem;
     padding: 0.3rem;
-    box-shadow    : $basic-shadow;
+    cursor        : pointer;
   }
   #article_title {
     @include basic_form;
@@ -292,6 +298,27 @@ h4{
   } 
   #user_name, #user_email, #user_password , #user_password_confirmation{
     @include users_form;
+  }
+  .choose_icon{
+    background-color: rgba(104, 104, 104, 0.952);
+    color           : $main-color2;
+    font-weight     : bold;
+    border-color    : rgba(104, 104, 104, 0.952);
+    border-radius   : 0.3rem;
+    box-shadow      : $basic-shadow;
+    cursor          : pointer;
+    transition      : 0.2s;
+    &:hover{
+      box-shadow    : none;
+      color         : $main-color3;
+      border-style  : solid;
+      border-width  : 0.1rem;
+      border-color  : $main-color3;
+      background    : $main-color2;
+    }
+  }
+  #user_picture{
+    display: none;
   }
   #session_email, #session_password{
     @include users_form;
