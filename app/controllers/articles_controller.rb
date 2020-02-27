@@ -1,5 +1,6 @@
 class ArticlesController < ApplicationController
   before_action :logged_in_user, only:[:new, :create, :edit, :update, :destroy]
+  before_action :store_location, only:[:index, :new]
 
   def index
     @articles = Article.order(created_at: :desc)
@@ -40,7 +41,8 @@ class ArticlesController < ApplicationController
   def destroy
     article = Article.find(params[:id])
     article.destroy
-    redirect_to root_url, notice: "記事を削除しました。"
+    redirect_to session[:forwarding_url] || root_url, notice: "記事を削除しました。"
+    session.delete(:forwarding_url)
   end
 
   private

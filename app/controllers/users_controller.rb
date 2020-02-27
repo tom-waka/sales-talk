@@ -2,6 +2,7 @@ class UsersController < ApplicationController
   before_action :logged_in_user, only:[:edit, :update, :destroy]
   before_action :correct_user,   only:[:edit, :update, :destroy]
   before_action :admin_check,    only:[:index]
+  before_action :store_location, only:[:show]
 
   def index
     @users = User.order(:created_at)
