@@ -1,16 +1,21 @@
 <div class="wrapper grid">
   <% object.each do |article| %>
     <div class="article-item">
-      <p><%= link_to article.title, article %></p>
+      <div class="author">
+        <% if article.user.picture? %>
+          <%= link_to image_tag(article.user.picture.url, class: "user-icon"), article.user %>
+        <% else %>
+          <%= link_to image_tag('default_icon.png', class: "user-icon"), article.user %>
+        <% end %>
+        <div class="user-in-charge">
+          <div class="charge">営業担当：</div> 
+          <%= link_to "#{article.user.name}", article.user, {class: "user-name"} %>
+        </div> 
+      </div>
 
-      <% if article.user.picture? %>
-        <%= image_tag article.user.picture.url, class: "user-icon" %>
-      <% else %>
-        <%= image_tag 'default_icon.png', class: "user-icon" %>
-      <% end %>
+      <div class="article-title"><%= link_to article.title, article%></div> 
 
-      <div class="user-name"><%= "営業担当：#{article.user.name}" %></div>
-      <p class="option">
+      <div class="option">
         <%= "投稿日：#{article.created_at.to_s(:datetime)}" %>
         <% if logged_in? %>
           <% if current_user.admin? || is_mine?(article)  %>
@@ -18,7 +23,7 @@
             <%= link_to "削除", article_path(article), method: :delete, data: {confirm: "記事を削除します。よろしいですか？"} %>
           <% end %>
         <% end %>  
-      </p>
+      </div>
     </div>
   <% end %>
 </div>

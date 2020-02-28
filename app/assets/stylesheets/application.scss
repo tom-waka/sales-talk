@@ -1,7 +1,12 @@
-@import 'font-awesome-sprockets';
-@import 'font-awesome';
-
 /* 共通・汎用 */
+
+$main-font1: 'Kosugi Maru', ;
+$main-font2: 'Noto Sans JP', ;
+$main-color1: rgb(255, 164, 60);
+$main-color2: white;
+$main-color3: rgba(255, 164, 60, 0.904);
+$basic-shadow: 3px 3px 3px rgba(78, 78, 78, 0.5);
+$drop-shadow: drop-shadow(3px 3px 3px rgba(78, 78, 78, 0.5));
 
 body{
   margin:0 auto;
@@ -9,13 +14,12 @@ body{
   word-wrap: break-word;
 }
 
-$main-font1: 'Kosugi', sans-serif;
-$main-font2: 'Noto Sans JP', ;
-$main-color1: rgb(255, 164, 60);
-$main-color2: white;
-$main-color3: rgba(255, 164, 60, 0.904);
-$basic-shadow: 3px 3px 3px rgba(78, 78, 78, 0.5);
-$drop-shadow: drop-shadow(3px 3px 3px rgba(78, 78, 78, 0.5));
+a{
+  text-decoration: none;
+  &:hover{
+    text-decoration: underline;
+  }
+}
 
 @mixin basic_container{
   max-width: 615px;
@@ -36,10 +40,11 @@ $drop-shadow: drop-shadow(3px 3px 3px rgba(78, 78, 78, 0.5));
   border-color: $main-color3;
   border-radius: 0.3rem;
   border-width: 0.15rem;
-  padding: 0.5rem;
+  padding: 0.5rem 0.2rem;
   margin-top: 0.5rem;
   margin-bottom: 2.5rem;
-  width: 100%;
+  width: 103%;
+  font-size: 1.0rem;
   box-shadow    : $basic-shadow;
 }
 
@@ -51,7 +56,7 @@ $drop-shadow: drop-shadow(3px 3px 3px rgba(78, 78, 78, 0.5));
 @mixin basic_icon{
   border-style: solid;
   border-color: rgba(158, 158, 158, 0.603);
-  border-radius: 1rem;
+  border-radius: 1rem; 
 }
 
 @mixin basic_btn{
@@ -155,7 +160,8 @@ h4{
     height: 3.5rem;
     width: 16rem;
     padding: 0.5rem;
-    margin-top: 0.5rem;
+    margin: auto 1.2rem;
+    margin-left: unset;
     transition: filter 0.2s;
     &:hover {
       filter: $drop-shadow;
@@ -164,8 +170,8 @@ h4{
   .main-nav{
     display: flex;
     padding-inline-start: unset;
-    margin-top: 1.2rem;
-    margin-right: 1.0rem;
+    margin: auto 1.2rem;
+    margin-left: unset;
     height: fit-content;
     li{
       list-style: none;
@@ -202,21 +208,44 @@ h4{
   border-style: solid;
   border-color: $main-color1;
   border-radius: 0.3rem;
-  padding: 1rem 0.5rem 0.5rem;
+  padding: 0.5rem;
   box-shadow: $basic-shadow;
-  .user-icon{
-    @include basic_icon;
-    width: 4em;
-    height: 4em;
+  .author{
+    display: flex;
+    .user-icon{
+      @include basic_icon;
+      width: 4em;
+      height: 4em;
+      transition: 0.2s;
+      &:hover{
+        opacity: .5;
+      }
+    }
+    .user-in-charge{
+      margin-left: 0.3rem;
+      .charge{
+        font-size: 0.8rem;
+      }
+      .user-name{
+        font-size: 0.9rem;
+        color: black;
+      }
+    }
   }
-  .user-name{
-    position:absolute;
+  .article-title{
+    text-align: center;
     font-weight: bold;
+    margin-top: 0.5rem;
+    padding-top: 0.5rem;
+    border-top: solid;
+    border-width: 0.1rem;
+    border-color: rgba(78, 78, 78, 0.5);
   }
   .option{
     position:absolute;
     right: 0.5em;
-    bottom: 1.0em;
+    bottom: 0.5em;
+    font-size: 0.8rem;
   }
 }
   
@@ -226,18 +255,54 @@ h4{
   @include basic_container;
   .title{
     text-align: center;
-    margin: 1.5rem 0;
-    padding: 0.5rem;
+    margin: 5.0rem 0;
+    padding: 0.5rem 0.2rem;
     font-weight: bold;
   }
-  .content{
-    border-style: solid;
-    border-color: $main-color1;
-    border-radius: 0.3rem;
-    border-width: 0.15rem;
-    padding: 0.5rem;
+  .author{
+    display: flex;
+    margin-bottom: 1rem;
     text-align: left;
-    box-shadow: $basic-shadow;
+    .user-icon{
+      @include basic_icon;
+      width: 4em;
+      height: 4em;
+      transition: 0.2s;
+      &:hover{
+        opacity: .5;
+      }
+    }
+    .user-in-charge{
+      margin-left: 0.3rem;
+      .charge{
+        font-size: 1rem;
+      }
+      .user-name{
+        font-size: 1rem;
+        color: black;
+      }
+    }
+  }
+  .content{
+    position: relative;
+    border-top-style: solid;
+    border-bottom-style: solid;
+    border-color: $main-color1;
+    border-width: 0.3rem;
+    padding: 0.5rem 0.2rem;
+    text-align: left;
+  }
+  .content::before{
+    content: '';
+    position: absolute;
+    left: 1rem;
+    top: -1rem;
+    display: block;
+    width: 0;
+    height: 0;
+    border-right: 1rem solid transparent;
+    border-bottom: 1rem solid $main-color3;
+    border-left: 1rem solid transparent;
   }
   .option{
     text-align: right;
@@ -262,8 +327,7 @@ h4{
       margin-bottom: 1rem;
     }
     .user-name{
-      font-family: $main-color2;
-      font-size: 1.5rem;
+      font-size: 2rem;
     }
   }
   
@@ -302,7 +366,7 @@ h4{
   .choose_icon{
     background-color: rgba(104, 104, 104, 0.952);
     color           : $main-color2;
-    font-weight     : bold;
+    font-family     : $main-font2;
     border-color    : rgba(104, 104, 104, 0.952);
     border-radius   : 0.3rem;
     box-shadow      : $basic-shadow;
@@ -310,11 +374,7 @@ h4{
     transition      : 0.2s;
     &:hover{
       box-shadow    : none;
-      color         : $main-color3;
-      border-style  : solid;
-      border-width  : 0.1rem;
-      border-color  : $main-color3;
-      background    : $main-color2;
+      background    : rgba(61, 61, 61, 0.952);
     }
   }
   #user_picture{
@@ -372,6 +432,9 @@ h4{
   .grid{
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     margin: 2rem 1.3rem 1rem;
+    .article-title{
+      margin-top: 0.5rem;
+    }
   }
 
   .container label{

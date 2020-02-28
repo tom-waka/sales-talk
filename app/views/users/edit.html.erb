@@ -14,7 +14,7 @@
           <%= image_tag 'default_icon.png', id: :img_prev, class: "user-icon" %>
         <% end %>
 
-        <p><%= f.label :picture, "アイコンを設定する", {class: 'choose_icon'} %></p>
+        <p><%= f.label :picture, "アイコンを選択", {class: 'choose_icon'} %></p>
         <%= f.file_field :picture, id: :user_picture, accept: 'image/jpeg,image/gif,image/png' %>
         <script type="text/javascript">
           $(function() {

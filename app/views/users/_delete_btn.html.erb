@@ -1,7 +1,9 @@
-<% if current_user?(@user) && !current_user.admin? && !current_user.test_user? %>
-  <p><%= link_to "退会する", user_path(@user), class: "btn-danger", method: :delete,
-                             data: {confirm: "退会すると、投稿した記事も削除されます。よろしいですか？"} %></p>
-<% elsif !current_user?(@user) && current_user.admin? %>
-  <p><%= link_to "ユーザーを削除する", user_path(@user), class: "btn-danger", method: :delete,
-                                       data: {confirm: "ユーザー「#{@user.name}」を削除します。よろしいですか？"} %></p>
+<% if logged_in? %>
+  <% if current_user?(@user) && !current_user.admin? && !current_user.test_user? %>
+    <p><%= link_to "退会する", user_path(@user), class: "btn-danger", method: :delete,
+                              data: {confirm: "退会すると、投稿した記事も削除されます。よろしいですか？"} %></p>
+  <% elsif !current_user?(@user) && current_user.admin? %>
+    <p><%= link_to "ユーザーを削除する", user_path(@user), class: "btn-danger", method: :delete,
+                                        data: {confirm: "ユーザー「#{@user.name}」を削除します。よろしいですか？"} %></p>
+  <% end %>
 <% end %>

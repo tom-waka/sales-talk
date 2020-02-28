@@ -5,9 +5,8 @@ class ApplicationController < ActionController::Base
   private
   
     def logged_in_user
-      unless logged_in? || current_user.admin?
+      unless logged_in?
         redirect_to login_path, notice: "ログインをしてください。"
       end
     end
-    
 end
