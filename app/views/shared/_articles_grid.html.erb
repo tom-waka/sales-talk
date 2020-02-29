@@ -13,7 +13,9 @@
         </div> 
       </div>
 
-      <div class="article-title"><%= link_to article.title, article%></div> 
+      <div class="title-zone">
+        <div class="article-title"><%= link_to article.title, article%></div> 
+      </div>
 
       <div class="option">
         <%= "投稿日：#{article.created_at.to_s(:datetime)}" %>

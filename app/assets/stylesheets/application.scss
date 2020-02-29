@@ -1,7 +1,7 @@
 /* 共通・汎用 */
 
-$main-font1: 'Kosugi Maru', ;
-$main-font2: 'Noto Sans JP', ;
+$Kosugi-font: 'Kosugi Maru', ;
+$Noto-font  : 'Noto Sans JP', ;
 $main-color1: rgb(255, 164, 60);
 $main-color2: white;
 $main-color3: rgba(255, 164, 60, 0.904);
@@ -12,6 +12,7 @@ body{
   margin:0 auto;
   overflow-wrap: break-word;
   word-wrap: break-word;
+  font-family: $Noto-font;
 }
 
 a{
@@ -29,9 +30,9 @@ a{
 
 @mixin basic_grid{
   display: grid;
-  gap: 3rem;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  margin: 2rem 3.5rem 1rem;
+  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
+  margin: 2rem 3rem 1rem;
 }
 
 @mixin basic_form{
@@ -71,7 +72,7 @@ a{
 @mixin basic_btn{
   display       : inline-block;
   border-radius : 0.8rem;
-  font-family   : $main-font2;   
+  font-family   : $Noto-font;   
   font-size     : 1.2rem;            
   text-align    : center; 
   text-decoration: none;    
@@ -105,7 +106,7 @@ a{
   }
 }
 @mixin heading{
-  font-family: $main-font2;
+  font-family: $Noto-font;
   text-align: center;
   margin: 2rem auto 3rem;
   padding: 0.5rem 1rem;
@@ -188,7 +189,7 @@ h4{
           margin: 0.5rem;
           border-radius: 1.0rem;
           .nav-item{
-            font-family: $main-font1;
+            font-family: $Kosugi-font;
             font-size: 0.9rem;
             color: $main-color2;
             text-decoration: none;
@@ -235,11 +236,10 @@ h4{
       width: 4em;
       height: 4em;
     }
-    
     .user-in-charge{
       margin-left: 0.3rem;
       .charge{
-        font-size: 0.75rem;
+        font-size: 0.8rem;
         font-weight: bold;
       }
       .user-name{
@@ -248,14 +248,19 @@ h4{
       }
     }
   }
-  .article-title{
-    text-align: center;
-    font-weight: bold;
+  .title-zone{
+    display: flex;
+    height: 7.5rem;
     margin-top: 0.5rem;
-    padding-top: 0.5rem;
     border-top: solid;
     border-width: 0.1rem;
     border-color: rgba(78, 78, 78, 0.5);
+    .article-title{
+      align-self: center;
+      text-align: center;
+      font-weight: bold;
+      margin: 0 auto;
+    }
   }
   .option{
     position:absolute;
@@ -271,10 +276,12 @@ h4{
   @include basic_container;
   .title{
     text-align: center;
-    margin: 5.0rem 0;
-    padding: 0.5rem 0.2rem;
+    margin: 4.0rem 0 2.0rem;
+    padding: 2.0rem 0.2rem;
+    border-radius: 0.5rem;
+    font-size: 1.2rem;
     font-weight: bold;
-    filter: $drop-shadow;
+    background-color: rgba(201, 201, 201, 0.205);
   }
   .author{
     display: flex;
@@ -341,7 +348,7 @@ h4{
       pointer-events: none;
     }
     .user-name{
-      font-size: 1.5rem;
+      font-size: 1.2rem;
     }
   }
   
@@ -368,8 +375,9 @@ h4{
   }
   #article_title {
     @include basic_form;
-    text-align: center;
+    font-size: 1.2rem;
     font-weight: bold;
+    text-align: center;
   } 
   #article_content {
     @include basic_form;
@@ -380,7 +388,7 @@ h4{
   .choose_icon{
     background-color: rgba(104, 104, 104, 0.952);
     color           : $main-color2;
-    font-family     : $main-font2;
+    font-family     : $Noto-font;
     border-color    : rgba(104, 104, 104, 0.952);
     border-radius   : 0.3rem;
     box-shadow      : $basic-shadow;
@@ -406,6 +414,9 @@ h4{
     .header-menu{
       display: flex;
       flex-direction: column;
+      .logo{
+        padding-bottom: unset;
+      }
       .main-nav{
         margin: unset;
         margin-bottom: 0.3rem;
@@ -415,7 +426,7 @@ h4{
             border-radius: 1.0rem;
             .user-icon{
               @include basic_icon;
-              border-radius: 0.5rem;
+              border-radius: 0.7rem;
               border-width: 0.15rem;
               width: 2.5rem;
               height: 2.5rem;
@@ -426,6 +437,25 @@ h4{
     }
   }
 
+  .container {
+    .title {
+      font-size: 1.1rem;
+    }
+    #article_title{
+      font-size: 1.1rem;
+    }
+  }
+
+  .user_info{
+    .user-icon{
+      width: 7rem;
+      height: 7rem;
+    }
+    .user-name{
+      font-size: 1.0rem;
+    }
+  }
+
   .container{
     margin: 0.5rem 1rem;
   }
@@ -433,6 +463,10 @@ h4{
   .grid{
     gap: 2rem;
     margin: 2rem 1.5rem 1rem;
+    .article-item .author .user-icon{
+      width: 3rem;
+      height: 3rem;
+    }
   }
 }
 
@@ -466,6 +500,10 @@ h4{
     .article-title{
       margin-top: 0.5rem;
     }
+  }
+
+  .article-item .author .user-in-charge .user-name{
+    font-size: 0.8rem;
   }
 
   .container label{
