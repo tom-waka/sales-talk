@@ -30,7 +30,7 @@ a{
 
 @mixin basic_grid{
   display: grid;
-  gap: 2rem;
+  gap: 2.5rem;
   grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
   margin: 2rem 3rem 1rem;
 }
@@ -297,6 +297,7 @@ h4{
       margin-left: 0.3rem;
       .charge{
         font-size: 1rem;
+        font-weight: bold;
       }
       .user-name{
         font-size: 1rem;
