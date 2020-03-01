@@ -12,9 +12,9 @@
   <%= render 'edit_btn' %>
 </div>
 
-<div class="section-title">投稿一覧</div> 
+<div class="section-title">営業履歴</div> 
 <% unless @user.articles.present? %>
-  <h3>投稿記事はありません</h3>
+  <div class="no_articles">営業履歴はありません</div>
 <% end %>
 
 <%  user_articles = @user.articles.page(params[:page]).per(6) %> 

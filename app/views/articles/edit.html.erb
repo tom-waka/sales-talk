@@ -6,12 +6,12 @@
   <%= form_with model: @article, local: true do |f| %>
     <p><%= render partial: 'shared/error_messages', locals: { object: f.object } %></p>
 
-    <p><%= f.label :title, "タイトル（５０文字以内）" %></p>
+    <%= f.label :title, "タイトル(５０文字以内)" %>
     <%= f.text_area :title,  rows: 3 %>
 
-    <p><%= f.label :content, "好きなモノについて紹介してください！" %></p>
+    <%= f.label :content, "好きなモノについて紹介してください" %>
     <%= f.text_area :content,  rows: 25 %>
 
-    <p><%= f.submit "更新する", class: "btn" %></p>
+    <%= f.submit "更新する", class: "btn" %>
   <% end %>
 </div>

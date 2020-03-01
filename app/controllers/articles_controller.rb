@@ -1,6 +1,8 @@
 class ArticlesController < ApplicationController
   before_action :logged_in_user, only:[:new, :create, :edit, :update, :destroy]
+  before_action :correct_article,only:[:edit, :update, :destroy]
   before_action :store_location, only:[:index, :new]
+  before_action :can_not_delete, only:[:destroy]
 
   def index
     @articles = Article.order(created_at: :desc).page(params[:page]).per(6)
@@ -50,4 +52,17 @@ class ArticlesController < ApplicationController
     def article_params
       params.require(:article).permit(:title, :content)
     end
+
+    def correct_article
+      article = Article.find(params[:id])
+      redirect_to root_url, notice: "このURLにはアクセスできません" unless is_mine?(article) || current_user.admin?
+    end
+
+    def can_not_delete
+      article = Article.find(params[:id])
+      if article.user.test_user? && !current_user.admin?
+        redirect_to request.referer, notice: "テストユーザーの投稿は削除できません。"
+      end
+    end
+
 end

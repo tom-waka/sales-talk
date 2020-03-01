@@ -8,12 +8,12 @@
   <%= form_with model: @article, local: true do |f| %>
     <p><%= render partial: 'shared/error_messages', locals: { object: f.object } %></p>
 
-    <p><%= f.label :title, "タイトル（５０文字以内）" %></p>
+    <%= f.label :title, "タイトル(５０文字以内)" %>
     <%= f.text_area :title,  rows: 3 , placeholder: "例：絶対に一度は見るべき映画を紹介します。" %>
 
-    <p><%= f.label :content, "好きなモノについて紹介してください！" %></p>
+    <%= f.label :content, "好きなモノについて紹介してください" %>
     <%= f.text_area :content,  rows: 25 , placeholder: "好きなモノの概要、おすすめポイント等"%>
 
-    <p><%= f.submit "投稿する", class: "btn" %></p>
+    <%= f.submit "投稿する", class: "btn" %>
   <% end %>
 </div>

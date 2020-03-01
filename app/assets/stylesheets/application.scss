@@ -1,7 +1,6 @@
 @import "bootstrap";
 
-/* 共通・汎用 */
-
+/*  -----------------------------------------------------  共通・汎用  ----------------------------------------------------*/
 $Kosugi-font: 'Kosugi Maru', ;
 $Noto-font  : 'Noto Sans JP', ;
 $main-color1: rgb(255, 164, 60);
@@ -47,7 +46,7 @@ a{
   padding: 0.5rem 0;
   padding-left: 0.1rem;
   margin-top: 0.5rem;
-  margin-bottom: 2.5rem;
+  margin-bottom: 2.0rem;
   width: 100%;
   font-size: 1.0rem;
   box-shadow    : $basic-shadow;
@@ -110,6 +109,21 @@ a{
   }
 }
 
+@mixin btn_option{
+  background-color: rgba(104, 104, 104, 0.952);
+  color           : $main-color2;
+  font-family     : $Noto-font;
+  border-color    : rgba(104, 104, 104, 0.952);
+  border-radius   : 0.3rem;
+  box-shadow      : $basic-shadow;
+  cursor          : pointer;
+  transition      : 0.2s;
+  &:hover{
+    box-shadow    : none;
+    background    : rgba(61, 61, 61, 0.952);
+  }
+}
+
 .section-title{
   font-family: $Noto-font;
   font-size: 1.5rem;
@@ -149,7 +163,7 @@ a{
   box-sizing:         border-box;
 }
 
-/* header */
+/*  -----------------------------------------------------  ヘッダー  ----------------------------------------------------*/
 
 .page-header{
   background-color: $main-color1;
@@ -205,7 +219,7 @@ a{
   }
 }
 
-/* articles index */
+/*  -----------------------------------------------------  記事一覧  ----------------------------------------------------*/
 
 .grid{
   @include basic_grid;
@@ -261,7 +275,7 @@ a{
   }
 }
   
-/* articles show */
+/*  -----------------------------------------------------  記事詳細  ----------------------------------------------------*/
 
 .my_container{
   @include basic_container;
@@ -321,7 +335,7 @@ a{
   }
 }
 
-/* users show */
+/*  -----------------------------------------------------  ユーザーページ  ----------------------------------------------------*/
 
   .user_info{
     filter: $drop-shadow;
@@ -347,9 +361,13 @@ a{
   .grid{
     @include basic_grid;
   }
+  .no_articles{
+    text-align: center;
+    font-size: 1.2rem;
+  }
 
 
-/* form */
+/*  -----------------------------------------------------  送信フォーム  ----------------------------------------------------*/
 
 .my_container{
   @include basic_container;
@@ -363,6 +381,7 @@ a{
     border-width: 0.2rem;
     border-radius: 0rem;
     padding: 0.3rem;
+    margin-bottom: unset;
     cursor        : pointer;
   }
   #article_title {
@@ -377,19 +396,8 @@ a{
   #user_name, #user_email, #user_password , #user_password_confirmation{
     @include users_form;
   }
-  .choose_icon{
-    background-color: rgba(104, 104, 104, 0.952);
-    color           : $main-color2;
-    font-family     : $Noto-font;
-    border-color    : rgba(104, 104, 104, 0.952);
-    border-radius   : 0.3rem;
-    box-shadow      : $basic-shadow;
-    cursor          : pointer;
-    transition      : 0.2s;
-    &:hover{
-      box-shadow    : none;
-      background    : rgba(61, 61, 61, 0.952);
-    }
+  .choose_icon_btn{
+    @include btn_option;
   }
   #user_picture{
     display: none;
@@ -397,10 +405,15 @@ a{
   #session_email, #session_password{
     @include users_form;
   }
+  .test_login_btn{
+    @include btn_option;
+    margin-top: 2rem;
+    padding: 0.3rem;
+  }
 }
 
 
-/* ページネーション */
+/*  -----------------------------------------------------  ページネーション ----------------------------------------------------*/
 
 .pagination{
   justify-content: center;
@@ -415,13 +428,16 @@ a{
   border-color: $main-color3;
 }
 
-/* レスポンシブ */
+/*  -----------------------------------------------------  レスポンシブ(650px)  -------------------------------------------------*/
 
 @media (max-width: 650px){
   .page-header{
     .header-menu{
       display: flex;
       flex-direction: column;
+      .logo{
+        margin-bottom: 0.5rem;
+      }
       .main-nav{
         margin: unset;
         margin-bottom: 0.3rem;
@@ -481,6 +497,8 @@ a{
     padding: 0.5rem;
   }  
 }
+
+/*  -----------------------------------------------------  レスポンシブ(350px)  -------------------------------------------------*/
 
 @media (max-width: 350px){
   .page-header{

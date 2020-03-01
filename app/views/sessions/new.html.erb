@@ -1,17 +1,26 @@
 <% provide(:title, "ログイン") %>
 
-<div class="section-title">ログイン</div> 
-
 <div class="my_container"> 
+  <div class="test_login">
+    <%= form_with scope: :session, url: login_path, local: true do |f| %>
+      <%= f.hidden_field :email, value: 'test_user@sample.com' %>
+      <%= f.hidden_field :password, value: 'test_user_foobar' %>
+      <%= f.submit 'テストログイン', class: "test_login_btn",
+                                     data: {confirm: "テストユーザーは「記事の投稿」「記事の編集」のみ可能です。\n「アイコン変更」「記事の削除」「退会」はできません。"} %>
+    <% end %>
+  </div>
+
+  <div class="section-title">ログイン</div> 
+
   <%= form_with scope: :session, url: login_path, local: true do |f| %>
 
-    <p><%= f.label :email, "メールアドレス" %></p>
+    <%= f.label :email, "メールアドレス" %>
     <%= f.text_field :email, placeholder: 'メールアドレスを入力' %>
 
-    <p><%= f.label :password, "パスワード" %></p>
+    <%= f.label :password, "パスワード" %>
     <%= f.password_field :password, placeholder: 'パスワードを入力' %>
   
-    <p><%= f.submit "ログインする", class: "btn" %></p>
+    <%= f.submit "ログインする", class: "btn" %>
 
     <p><%= link_to "新規登録はこちら", signup_path %></p>
   <% end %>

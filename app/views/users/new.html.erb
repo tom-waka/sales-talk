@@ -1,23 +1,32 @@
 <% provide(:title, "ユーザー登録") %>
 
-<div class="section-title">ユーザー登録</div> 
-
 <div class="my_container">
+  <div class="test_login">
+    <%= form_with scope: :session, url: login_path, local: true do |f| %>
+      <%= f.hidden_field :email, value: 'test_user@sample.com' %>
+      <%= f.hidden_field :password, value: 'test_user_foobar' %>
+      <%= f.submit 'テストログイン', class: "test_login_btn",
+                                     data: {confirm: "テストユーザーは「記事の投稿」「記事の編集」のみ可能です。\n「アイコン変更」「記事の削除」「退会」はできません。"} %>
+    <% end %>
+  </div>
+
+  <div class="section-title">ユーザー登録</div> 
+
   <%= form_with model: @user, local: true do |f| %>
     <p><%= render partial: 'shared/error_messages', locals: { object: f.object } %></p>
 
-    <div class="image_btn"><p><%= f.label :name, "ユーザー名" %></p></div>
-    <%= f.text_field :name, placeholder: 'ユーザー名を入力' %>
+    <%= f.label :name, "ユーザー名" %>
+    <%= f.text_field :name, placeholder: 'ユーザー名を入力(30文字以内)' %>
 
-    <p><%= f.label :email, "メールアドレス" %></p>
-    <%= f.text_field :email, placeholder: 'メールアドレスを入力' %>
+    <%= f.label :email, "メールアドレス" %>
+    <%= f.text_field :email, placeholder: '例: test@sample.com' %>
 
-    <p><%= f.label :password, "パスワード（6文字以上）" %></p>
-    <%= f.password_field :password, placeholder: 'パスワードを入力' %>
+    <%= f.label :password, "パスワード" %>
+    <%= f.password_field :password, placeholder: 'パスワードを入力(6文字以上)' %>
 
-    <p><%= f.label :password_confirmation, "パスワードの再入力" %></p>
+    <%= f.label :password_confirmation, "パスワードの再入力" %>
     <%= f.password_field :password_confirmation, placeholder: 'もう一度パスワードを入力' %>
 
-    <p><%= f.submit "登録する", class: "btn" %></p>
+    <%= f.submit "登録する", class: "btn" %>
   <% end %>
 </div>
