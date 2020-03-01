@@ -3,7 +3,7 @@ class ArticlesController < ApplicationController
   before_action :store_location, only:[:index, :new]
 
   def index
-    @articles = Article.order(created_at: :desc)
+    @articles = Article.order(created_at: :desc).page(params[:page]).per(6)
   end
 
   def show

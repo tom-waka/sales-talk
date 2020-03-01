@@ -1,3 +1,5 @@
+@import "bootstrap";
+
 /* 共通・汎用 */
 
 $Kosugi-font: 'Kosugi Maru', ;
@@ -16,6 +18,7 @@ body{
 }
 
 a{
+  color: rgb(33, 84, 252);
   text-decoration: none;
   &:hover{
     text-decoration: underline;
@@ -32,7 +35,7 @@ a{
   display: grid;
   gap: 2.5rem;
   grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
-  margin: 2rem 3rem 1rem;
+  margin: 2rem 3rem;
 }
 
 @mixin basic_form{
@@ -103,33 +106,20 @@ a{
   margin-top: 3rem;
   &:hover{
     color: rgba(255, 0, 0, 0.849);
+    border-color: rgba(255, 0, 0, 0.849);
   }
 }
-@mixin heading{
+
+.section-title{
   font-family: $Noto-font;
+  font-size: 1.5rem;
   text-align: center;
-  margin: 2rem auto 3rem;
+  margin: 2rem auto;
   padding: 0.5rem 1rem;
-  filter: $drop-shadow;
-}
-
-h1{
-  @include heading;
-}
-
-h2{
-  @include heading;
   width: fit-content;
   border-bottom: solid;
   border-color: $main-color3;
-}
-
-h3{
-  @include heading;
-}
-
-h4{
-  @include heading;
+  filter: $drop-shadow;
 }
 
 .error{
@@ -208,7 +198,6 @@ h4{
             border-radius: 0.7rem;
             width: 3rem;
             height: 3rem;
-            margin-top: 0.5rem;
           }
         }
       }
@@ -259,6 +248,7 @@ h4{
     .article-title{
       align-self: center;
       text-align: center;
+      font-size: 1.1rem;
       font-weight: bold;
       margin: 0 auto;
     }
@@ -273,7 +263,7 @@ h4{
   
 /* articles show */
 
-.container{
+.my_container{
   @include basic_container;
   .title{
     text-align: center;
@@ -361,7 +351,7 @@ h4{
 
 /* form */
 
-.container{
+.my_container{
   @include basic_container;
   label{
     background-color: $main-color2;
@@ -409,6 +399,22 @@ h4{
   }
 }
 
+
+/* ページネーション */
+
+.pagination{
+  justify-content: center;
+}
+.page-link {
+  color: #585858;
+  background-color: #fff;
+  border: 1px solid #dee2e6;
+}
+.page-item.active .page-link {
+  background-color: $main-color3;
+  border-color: $main-color3;
+}
+
 /* レスポンシブ */
 
 @media (max-width: 650px){
@@ -440,7 +446,7 @@ h4{
     }
   }
 
-  .container {
+  .my_container {
     .title {
       font-size: 1.1rem;
     }
@@ -459,7 +465,7 @@ h4{
     }
   }
 
-  .container{
+  .my_container{
     margin: 0.5rem 1rem;
   }
 
@@ -471,6 +477,9 @@ h4{
       height: 3rem;
     }
   }
+  .page-link {
+    padding: 0.5rem;
+  }  
 }
 
 @media (max-width: 350px){
@@ -509,11 +518,14 @@ h4{
     font-size: 0.8rem;
   }
 
-  .container label{
+  .my_container label{
     font-size: 0.9rem;
   }
-}
 
+  .page-link {
+    padding: 0.35rem;
+  }  
+}
 
 /* miscellaneous */
 

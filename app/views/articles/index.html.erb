@@ -1,4 +1,6 @@
 <% provide(:title, "") %>
 
-<h2>投稿一覧</h2>
+<div class="section-title">投稿一覧</div> 
+
 <%= render partial: 'shared/articles_grid', locals: { object: @articles } %>
+<%= paginate @articles, window: 2, left: 1, right: 1 %>

@@ -1,12 +1,12 @@
 <% provide(:title, "ユーザー情報の編集") %>
 
-<h2>ユーザー情報の編集</h2>
+<div class="section-title">ユーザー情報の編集</div> 
 
-<div class="container">
+<div class="my_container">
   <%= form_with model: @user, local: true do |f| %>
     <p><%= render partial: 'shared/error_messages', locals: { object: f.object } %></p>
 
-    <div class="container">
+    <div class="my_container">
       <div class="user_info">
         <% if @user.picture? %>
           <%= image_tag @user.picture.url, id: :img_prev, class: "user-icon" %>

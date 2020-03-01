@@ -1,5 +1,12 @@
 ---
 ja:
+  views:
+    pagination:
+      first: "&laquo; 最初"
+      last: "最後 &raquo;"
+      previous: "&lt;"
+      next: "&gt;"
+      truncate: "..."
   activerecord:
     errors:
       messages:
