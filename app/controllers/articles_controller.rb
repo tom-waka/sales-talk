@@ -20,7 +20,7 @@ class ArticlesController < ApplicationController
     @article = current_user.articles.build(article_params)
     
     if @article.save
-      redirect_to @article, notice: "記事を投稿しました。"
+      redirect_to @article, notice: "記事を投稿しました"
     else 
       render 'articles/new'
     end
@@ -34,7 +34,7 @@ class ArticlesController < ApplicationController
     @article = Article.find(params[:id])
 
     if @article.update(article_params)
-      redirect_to @article, notice: "記事を更新しました。"
+      redirect_to @article, notice: "記事を更新しました"
     else
       render 'articles/edit'
     end
@@ -43,7 +43,7 @@ class ArticlesController < ApplicationController
   def destroy
     article = Article.find(params[:id])
     article.destroy
-    redirect_to session[:forwarding_url] || root_url, notice: "記事を削除しました。"
+    redirect_to session[:forwarding_url] || root_url, notice: "記事を削除しました"
     session.delete(:forwarding_url)
   end
 
@@ -61,7 +61,7 @@ class ArticlesController < ApplicationController
     def can_not_delete
       article = Article.find(params[:id])
       if article.user.test_user? && !current_user.admin?
-        redirect_to request.referer, notice: "テストユーザーの投稿は削除できません。"
+        redirect_to request.referer, notice: "テストユーザーの投稿は削除できません"
       end
     end
 

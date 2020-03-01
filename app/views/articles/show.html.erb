@@ -22,7 +22,7 @@
     <% if logged_in? %>
       <% if current_user.admin? || is_mine?(@article)  %>
           <%= link_to "編集", edit_article_path(@article) %>
-          <%= link_to "削除", article_path(@article), method: :delete, data: {confirm: "記事を削除します。よろしいですか？"} %>
+          <%= link_to "削除", article_path(@article), method: :delete, data: {confirm: "記事を削除します。よろしいですか？"} unless current_user.test_user%>
       <% end %>
     <% end %>
   </div>
