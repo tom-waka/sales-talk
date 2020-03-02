@@ -16,6 +16,13 @@ body{
   overflow-wrap: break-word;
   word-wrap: break-word;
   font-family: $Noto-font;
+  display: flex;
+  flex-flow: column;
+  min-height: 100vh;
+}
+
+.main{
+  flex: 1;
 }
 
 a{
@@ -464,11 +471,41 @@ a{
   }
 }
 
+/*  -----------------------------------------------------  フッター footer ----------------------------------------------------*/
+
+.footer-wrapper{
+  .page-footer{
+    display: flex;
+    flex-flow: column;
+    
+    width: 100%;
+    margin-top: 8rem;
+    padding: 1rem 1rem 0.5rem;
+    background-color: rgb(177, 177, 177);
+    text-align: center;
+    ul{
+      display: flex;
+      justify-content: center;
+      li{
+        list-style: none;
+        margin: 0 1rem;
+      }
+    }
+    a{
+      color: $main-color2;
+    }
+    .footer-title{
+      color: black;
+      font-size: 0.8rem;
+    }
+  }
+}
 
 /*  -----------------------------------------------------  ページネーション ----------------------------------------------------*/
 
 .pagination{
   justify-content: center;
+  margin-top: 4rem;
 }
 .page-link {
   color: #585858;
