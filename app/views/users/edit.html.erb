@@ -35,18 +35,18 @@
       </div>
     </div>
 
-    <p><%= f.label :name, "ユーザー名" %></p>
+    <%= f.label :name, "ユーザー名" %>
     <%= f.text_field :name, placeholder: 'ユーザー名を入力' %>
 
-    <p><%= f.label :email, "メールアドレス" %></p>
+    <%= f.label :email, "メールアドレス" %>
     <%= f.text_field :email, placeholder: 'メールアドレスを入力' %>
 
-    <p><%= f.label :password, "パスワード（6文字以上）" %></p>
+    <%= f.label :password, "パスワード(6文字以上)" %>
     <%= f.password_field :password, placeholder: '変更後のパスワードを入力' %>
 
-    <p><%= f.label :password_confirmation, "パスワードの再入力" %></p>
+    <%= f.label :password_confirmation, "パスワードの再入力" %>
     <%= f.password_field :password_confirmation, placeholder: '変更後のパスワードを再入力' %>
 
-    <p><%= f.submit "更新する", class: "btn" %></p>
+    <%= f.submit "更新する", class: "btn" %>
   <% end %>
 </div>

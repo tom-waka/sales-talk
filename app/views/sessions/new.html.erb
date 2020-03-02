@@ -6,14 +6,13 @@
       <%= f.hidden_field :email, value: 'test_user@sample.com' %>
       <%= f.hidden_field :password, value: 'test_user_foobar' %>
       <%= f.submit 'テストログイン', class: "test_login_btn",
-                                     data: {confirm: "テストユーザーは「記事の投稿」「記事の編集」「いいね」が可能です。\n「アイコン/登録情報の変更」「記事の削除」「退会」はできません。"} %>
+                                     data: {confirm: "テストユーザーは\n「アイコン/登録情報の変更」「記事の削除」「退会」\nができません。"} %>
     <% end %>
   </div>
 
   <div class="section-title">ログイン</div> 
 
   <%= form_with scope: :session, url: login_path, local: true do |f| %>
-
     <%= f.label :email, "メールアドレス" %>
     <%= f.text_field :email, placeholder: 'メールアドレスを入力' %>
 
