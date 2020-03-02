@@ -1,0 +1,9 @@
+<% if logged_in? && !is_mine?(article) %>
+  <% if article.liked_by?(current_user) %>
+    取消<%= link_to article.likes.count, article_likes_path(article.id), method: :delete, remote: true %>
+  <% else %>
+    いいね<%= link_to article.likes.count, article_likes_path(article.id), method: :post, remote: true %>
+  <% end %>
+<% else %>
+  いいね数: <%= article.likes.count %>
+<% end %>

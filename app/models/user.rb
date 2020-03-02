@@ -1,5 +1,6 @@
 class User < ApplicationRecord
   has_many :articles, dependent: :destroy
+  has_many :likes, dependent: :destroy
   before_save { self.email = email.downcase }
   mount_uploader :picture, PictureUploader
   validates :name, presence: true, length: { maximum: 30 }
