@@ -1,9 +1,19 @@
-<% if logged_in? && !is_mine?(article) %>
-  <% if article.liked_by?(current_user) %>
-    取消<%= link_to article.likes.count, article_likes_path(article.id), method: :delete, remote: true %>
+<div class="likes_count">
+  <% if logged_in?  %>
+    <% if article.liked_by?(current_user) %>
+      <%= link_to article_likes_path(article.id), method: :delete, remote: true  do %>
+        <i class="fas fa-heart like"></i>
+      <% end %>
+      <div class="counter"><%= article.likes.count %></div>
+    <% else %>
+          <%= link_to article_likes_path(article.id), method: :post, remote: true  do %>
+        <i class="fas fa-heart unlike"></i>
+      <% end %>
+      <div class="counter"><%= article.likes.count %></div>
+    <% end %>
   <% else %>
-    いいね<%= link_to article.likes.count, article_likes_path(article.id), method: :post, remote: true %>
+    <i class="fas fa-heart negative"></i>
+    <div class="counter"><%= article.likes.count %></div>
+    <div class="attention">←「いいね」はログイン後に押せます。</div>
   <% end %>
-<% else %>
-  いいね数: <%= article.likes.count %>
-<% end %>
+</div>

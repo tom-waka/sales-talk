@@ -2,6 +2,7 @@
 
 <div class="my_container">
   <p class="title"><%= safe_join(@article.title.split("\n"),tag(:br)) %></p>
+
   <div class="author">
     <% if @article.user.picture? %>
       <%= link_to image_tag(@article.user.picture.url, class: "user-icon"), @article.user %>
