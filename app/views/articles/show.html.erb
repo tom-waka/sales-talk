@@ -16,7 +16,8 @@
   </div>
   
   <div class="content">
-    <%= safe_join(@article.content.split("\n"),tag(:br)) %>
+    <% text = safe_join(@article.content.split("\n"),tag(:br)) %>
+    <%= text_url_to_link(text).html_safe %>
   </div>
 
   <div id="likes_buttons_<%= @article.id %>" >
