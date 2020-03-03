@@ -229,6 +229,67 @@ a{
 
 /*  ------------------------------------------------  記事一覧 article#index ---------------------------------------------*/
 
+.balloon {
+  position: relative;
+  display: inline-block;
+  margin: 1.5em 0;
+  padding: 7px 10px;
+  width: 100%;
+  color: black;
+  font-size: 16px;
+  background: #FFF;
+  border: solid 3px black;
+  border-radius: 2rem;
+  box-sizing: border-box;
+}
+
+.balloon:before {
+  content: "";
+  position: absolute;
+  bottom: -24px;
+  left: 50%;
+  margin-left: -15px;
+  border: 12px solid transparent;
+  border-top: 12px solid #FFF;
+  z-index: 2;
+}
+
+.balloon:after {
+  content: "";
+  position: absolute;
+  bottom: -30px;
+  left: 50%;
+  margin-left: -17px;
+  border: 14px solid transparent;
+  border-top: 14px solid black;
+  z-index: 1;
+}
+
+.balloon{
+  display: flex;
+  justify-content: center;
+  .catch_copy {
+    font-family: 'Sawarabi Mincho', sans-serif;
+    text-align: left;
+    font-size: 5rem;
+    padding: 0;
+  }
+}
+ 
+
+
+.introduce_area{
+  align-items: center;
+  .mascot{
+    width: 13rem;
+    height: 13rem;
+    margin-bottom: 1rem;
+  }
+  .introduce{
+    margin-bottom: 0.5rem;
+  }
+}
+
 .grid{
   @include basic_grid;
 }
@@ -551,6 +612,16 @@ a{
     }
   }
 
+  .balloon .catch_copy {
+    font-size: 3.5rem;
+  }
+  .introduce_area{
+    .mascot{
+      width: 10rem;
+      height: 10rem;
+    }
+  }
+
   .my_container {
     .title {
       font-size: 1.1rem;
@@ -610,6 +681,20 @@ a{
           }
         }
       } 
+    }
+  }
+
+  .balloon .catch_copy {
+    font-size: 2rem;
+  }
+  .introduce_area{
+    .mascot{
+      width: 7rem;
+      height: 7rem;
+    }
+    .introduce{
+      font-size: 0.9rem;
+      margin-bottom: 0.5rem;
     }
   }
 

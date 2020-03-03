@@ -1,5 +1,7 @@
 <% provide(:title, "") %>
 
+<%= render partial: 'landing_page' unless logged_in? %>
+
 <div class="section-title">投稿一覧</div> 
 
 <%= render partial: 'shared/articles_grid', locals: { object: @articles } %>
