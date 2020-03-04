@@ -5,6 +5,7 @@
 /*  -----------------------------------------------------  共通・汎用  ----------------------------------------------------*/
 $Kosugi-font: 'Kosugi Maru', ;
 $Noto-font  : 'Noto Sans JP', ;
+$Mincho-font: 'Sawarabi Mincho', sans-serif;
 $main-color1: rgb(255, 164, 60);
 $main-color2: white;
 $main-color3: rgba(255, 164, 60, 0.836);
@@ -42,7 +43,7 @@ a{
 @mixin basic_grid{
   display: grid;
   gap: 2.5rem;
-  grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
   margin: 2rem 3rem;
 }
 
@@ -218,6 +219,7 @@ a{
           .user-icon{
             @include basic_icon;
             border-radius: 0.7rem;
+            border-width: 0.15rem;
             width: 3rem;
             height: 3rem;
           }
@@ -269,7 +271,7 @@ a{
   display: flex;
   justify-content: center;
   .catch_copy {
-    font-family: 'Sawarabi Mincho', sans-serif;
+    font-family: $Mincho-font;
     text-align: left;
     font-size: 5rem;
     padding: 0;
@@ -306,8 +308,8 @@ a{
     display: flex;
     .user-icon{
       @include basic_icon;
-      width: 4em;
-      height: 4em;
+      width: 3.5em;
+      height: 3.5em;
     }
     .user-in-charge{
       margin-left: 0.3rem;
@@ -322,18 +324,25 @@ a{
     }
   }
   .title-zone{
-    display: flex;
     height: 7.5rem;
     margin-top: 0.5rem;
     border-top: solid;
     border-width: 0.1rem;
     border-color: rgba(78, 78, 78, 0.5);
-    .article-title{
-      align-self: center;
+    a{
       text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 100%;
+      border-radius: 1rem;
       font-size: 1.1rem;
       font-weight: bold;
-      margin: 0 auto;
+      transition: 0.2s;
+      &:hover{
+        background-color: rgba(253, 189, 71, 0.116);
+      }
     }
   }
   .likes_count{
@@ -377,8 +386,8 @@ a{
     text-align: left;
       .user-icon{
         @include basic_icon;
-        width: 4em;
-        height: 4em;
+        width: 4rem;
+        height: 4rem;
       }
     .user-in-charge{
       margin-left: 0.3rem;
@@ -462,11 +471,11 @@ a{
   .user_info{
     padding: 2rem;
     margin: 3rem 0;
-    background-color: rgb(235, 235, 235);
+    background-color: rgba(218, 218, 218, 0.28);
     border-radius: 1rem;
     border-style: solid;
     border-width: 0.1rem;
-    border-color: rgba(119, 119, 119, 0.116);
+    border-color: rgba(119, 119, 119, 0.22);
     .user-icon{
       @include basic_icon;
       width: 10rem;
