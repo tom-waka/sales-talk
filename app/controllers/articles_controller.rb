@@ -1,7 +1,7 @@
 class ArticlesController < ApplicationController
   before_action :logged_in_user, only:[:new, :create, :edit, :update, :destroy]
   before_action :correct_article,only:[:edit, :update, :destroy]
-  before_action :store_location, only:[:index, :new]
+  before_action :store_location, only:[:index]
   before_action :can_not_delete, only:[:destroy]
 
   def index
@@ -10,6 +10,7 @@ class ArticlesController < ApplicationController
 
   def show
     @article = Article.find(params[:id])
+
   end
 
   def new
