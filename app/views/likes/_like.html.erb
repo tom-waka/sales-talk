@@ -6,13 +6,15 @@
       <% end %>
       <div class="counter"><%= article.likes.size %></div>
     <% else %>
-          <%= link_to article_likes_path(article.id), method: :post, remote: true  do %>
+      <%= link_to article_likes_path(article.id), method: :post, remote: true  do %>
         <i class="fas fa-heart unlike"></i>
       <% end %>
       <div class="counter"><%= article.likes.size %></div>
     <% end %>
   <% else %>
-    <i class="fas fa-heart negative"></i>
-    <div class="counter"><%= article.likes.size %></div>
+    <%= link_to login_path, notice: "いいねするには、ログインしてください。" do %>
+      <i class="fas fa-heart negative"></i>
+    <% end %>
+    <div class="counter"><%= article.likes.size %> (いいねは要ログイン)</div>
   <% end %>
 </div>
