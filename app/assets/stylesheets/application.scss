@@ -111,7 +111,7 @@ a{
   @include basic_btn;
   background-color:rgba(255, 0, 0, 0.849);
   border-color: rgba(255, 0, 0, 0.849);
-  margin-top: 3rem;
+  margin-top: 5rem;
   &:hover{
     color: rgba(255, 0, 0, 0.849);
     border-color: rgba(255, 0, 0, 0.849);
@@ -181,6 +181,7 @@ a{
     display: flex;
     align-items: center;
     justify-content: space-between;
+    padding: 0 2rem;
     .logo{
       height: 3.5rem;
       width: 16rem;
@@ -229,7 +230,7 @@ a{
   }
 }
 
-/*  ------------------------------------------------  記事一覧 article#index ---------------------------------------------*/
+/*  ------------------------------------------------  キャッチコピー ---------------------------------------------*/
 
 .balloon {
   position: relative;
@@ -292,6 +293,8 @@ a{
   }
 }
 
+/*  ------------------------------------------------  記事一覧 article#index ---------------------------------------------*/
+
 .grid{
   @include basic_grid;
 }
@@ -324,7 +327,7 @@ a{
     }
   }
   .title-zone{
-    height: 8rem;
+    height: 7.5rem;
     margin-top: 0.5rem;
     border-top: solid;
     border-width: 0.1rem;
@@ -463,10 +466,11 @@ a{
     .option{
       text-align: right;
     }
+
   }
   .link_to_back{
     margin-top: 2rem;
-    text-align: left;
+    text-align: center;
   }
 }
 
