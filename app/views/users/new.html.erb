@@ -10,23 +10,24 @@
     <% end %>
   </div>
 
-  <div class="section-title">ユーザー登録</div> 
+  <div class="form_area">
+    <div class="section-title">ユーザー登録</div> 
+    <%= form_with model: @user, local: true do |f| %>
+      <p><%= render partial: 'shared/error_messages', locals: { object: f.object } %></p>
 
-  <%= form_with model: @user, local: true do |f| %>
-    <p><%= render partial: 'shared/error_messages', locals: { object: f.object } %></p>
+      <%= f.label :name, "ユーザー名" %>
+      <%= f.text_field :name, placeholder: 'ユーザー名を入力(30文字以内)' %>
 
-    <%= f.label :name, "ユーザー名" %>
-    <%= f.text_field :name, placeholder: 'ユーザー名を入力(30文字以内)' %>
+      <%= f.label :email, "メールアドレス" %>
+      <%= f.text_field :email, placeholder: '例: test@sample.com' %>
 
-    <%= f.label :email, "メールアドレス" %>
-    <%= f.text_field :email, placeholder: '例: test@sample.com' %>
+      <%= f.label :password, "パスワード" %>
+      <%= f.password_field :password, placeholder: 'パスワードを入力(6文字以上)' %>
 
-    <%= f.label :password, "パスワード" %>
-    <%= f.password_field :password, placeholder: 'パスワードを入力(6文字以上)' %>
+      <%= f.label :password_confirmation, "パスワードの再入力" %>
+      <%= f.password_field :password_confirmation, placeholder: 'もう一度パスワードを入力' %>
 
-    <%= f.label :password_confirmation, "パスワードの再入力" %>
-    <%= f.password_field :password_confirmation, placeholder: 'もう一度パスワードを入力' %>
-
-    <%= f.submit "登録する", class: "btn" %>
-  <% end %>
+      <%= f.submit "登録する", class: "btn" %>
+    <% end %>
+  </div>
 </div>

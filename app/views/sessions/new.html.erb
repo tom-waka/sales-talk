@@ -10,17 +10,18 @@
     <% end %>
   </div>
 
-  <div class="section-title">ログイン</div> 
+  <div class="form_area">
+    <div class="section-title">ログイン</div> 
+    <%= form_with scope: :session, url: login_path, local: true do |f| %>
+      <%= f.label :email, "メールアドレス" %>
+      <%= f.text_field :email, placeholder: 'メールアドレスを入力' %>
 
-  <%= form_with scope: :session, url: login_path, local: true do |f| %>
-    <%= f.label :email, "メールアドレス" %>
-    <%= f.text_field :email, placeholder: 'メールアドレスを入力' %>
+      <%= f.label :password, "パスワード" %>
+      <%= f.password_field :password, placeholder: 'パスワードを入力' %>
+    
+      <%= f.submit "ログインする", class: "btn" %>
 
-    <%= f.label :password, "パスワード" %>
-    <%= f.password_field :password, placeholder: 'パスワードを入力' %>
-  
-    <%= f.submit "ログインする", class: "btn" %>
-
-    <p><%= link_to "新規登録はこちら", signup_path %></p>
-  <% end %>
+      <p><%= link_to "新規登録はこちら", signup_path %></p>
+    <% end %>
+  </div>
 </div>

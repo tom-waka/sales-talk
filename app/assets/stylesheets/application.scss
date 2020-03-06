@@ -9,6 +9,7 @@ $Mincho-font: 'Sawarabi Mincho', sans-serif;
 $main-color1: rgb(255, 164, 60);
 $main-color2: white;
 $main-color3: rgba(255, 164, 60, 0.836);
+$main-color4: #d39e0012;
 $basic-shadow: 3px 3px 3px rgba(78, 78, 78, 0.5);
 $drop-shadow: drop-shadow(3px 3px 3px rgba(78, 78, 78, 0.5));
 
@@ -58,7 +59,8 @@ a{
   margin-bottom: 2.0rem;
   width: 100%;
   font-size: 1.0rem;
-  box-shadow    : $basic-shadow;
+  background-color: white;
+  
 }
 
 @mixin users_form{
@@ -137,12 +139,11 @@ a{
   font-family: $Noto-font;
   font-size: 1.5rem;
   text-align: center;
-  margin: 2rem auto;
+  margin: 0 auto;
   padding: 0.5rem 1rem;
   width: fit-content;
   border-bottom: solid;
   border-color: $main-color3;
-  filter: $drop-shadow;
 }
 
 .error{
@@ -177,6 +178,7 @@ a{
 .page-header{
   background-color: $main-color1;
   width: 100%;
+  margin-bottom: 2rem;
   .header-menu{
     display: flex;
     align-items: center;
@@ -308,6 +310,7 @@ a{
   border-color: $main-color3;
   border-radius: 0.3rem;
   padding: 0.5rem;
+  background-color: $main-color4;
   box-shadow: $basic-shadow;
   .author{
     display: flex;
@@ -378,12 +381,12 @@ a{
   @include basic_container;
   .title{
     text-align: center;
-    margin: 4.0rem 0 2.0rem;
+    margin-bottom: 2.0rem;
     padding: 2.0rem 0.2rem;
     border-radius: 0.5rem;
     font-size: 1.2rem;
     font-weight: bold;
-    background-color: rgba(201, 201, 201, 0.205);
+    background-color: #ffcb3021;
   }
   .author{
     display: flex;
@@ -511,6 +514,14 @@ a{
 
 .my_container{
   @include basic_container;
+  .form_area{
+    border-style: solid;
+    border-width: 0.2rem;
+    border-radius: 0.5rem;
+    padding: 1rem;
+    border-color: $main-color3;
+    background-color: $main-color4;
+  }
   label{
     color: $main-color2;
     font-weight: bold;
@@ -557,7 +568,7 @@ a{
   }
   .test_login_btn{
     @include btn_option;
-    margin-top: 2rem;
+    margin-bottom: 2rem;
     padding: 0.3rem;
   }
 }
@@ -596,7 +607,7 @@ a{
 
 .pagination{
   justify-content: center;
-  margin-top: 4rem;
+  margin-top: 3rem;
 }
 .page-link {
   color: #585858;
