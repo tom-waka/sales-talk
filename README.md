@@ -1,5 +1,5 @@
 # SALES TALK
-![Alt text](app/assets/images/README.png)
+![Alt text](https://sales-talk-picture.s3-ap-northeast-1.amazonaws.com/+thumbnail/README.png)
 https://www.sales-talk.net/  
 SALES TALKは、自分の好きなモノを皆へ紹介するWebサービスです。  
 映画や本・音楽など、何でもありです。  
