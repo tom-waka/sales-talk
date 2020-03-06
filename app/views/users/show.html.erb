@@ -20,7 +20,7 @@
 
 <%  user_articles = @user.articles.page(params[:page]).per(6) %> 
 <%= render partial: 'shared/articles_grid', locals: { object: user_articles } %>
-<%= paginate user_articles %>
+<%= paginate user_articles, window: 2, left: 1, right: 1 %>
 
 <div class="my_container">
   <%= render 'delete_btn' %>

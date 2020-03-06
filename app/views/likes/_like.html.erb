@@ -12,9 +12,9 @@
       <div class="counter"><%= article.likes.size %></div>
     <% end %>
   <% else %>
-    <%= link_to login_path, notice: "いいねするには、ログインしてください。" do %>
+    <%= link_to login_path do %>
       <i class="fas fa-heart negative"></i>
     <% end %>
-    <div class="counter"><%= article.likes.size %> (いいねは要ログイン)</div>
+    <div class="counter"><%= article.likes.size %></div>
   <% end %>
 </div>

@@ -244,6 +244,7 @@ a{
   border: solid 3px black;
   border-radius: 2rem;
   box-sizing: border-box;
+  filter: $drop-shadow;
 }
 
 .balloon:before {
@@ -287,6 +288,7 @@ a{
     width: 13rem;
     height: 13rem;
     margin-bottom: 1rem;
+    filter: $drop-shadow;
   }
   .introduce{
     margin-bottom: 0.5rem;
@@ -536,13 +538,16 @@ a{
     @include btn_option;
   }
   #user_remove_picture{
-    margin-right: 0.5rem;
     cursor: pointer;
   }
-  .remove_picture_btn{
-    display: flex;
+  .remove_checkbox{
     justify-content: center;
-    align-items: center;
+    label{
+      padding-left: unset;
+      margin: 1rem 0 0;
+      background-color: unset;
+      color: black;
+    }
   }
   #user_picture{
     display: none;
@@ -602,6 +607,27 @@ a{
   background-color: $main-color3;
   border-color: $main-color3;
 }
+
+/*  ------------------------------------------------  ユーザー一覧 users#index ---------------------------------------------*/
+.user_box{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 60%;
+  margin: 0.5rem auto 2rem;
+  border-bottom: solid;
+  border-width: 0.1rem;
+  border-color: rgb(138, 138, 138);
+  .user-icon{
+    @include basic_icon;
+    border-radius: 0.7rem;
+    border-width: 0.15rem;
+    width: 3rem;
+    height: 3rem;
+  }
+}
+
+
 
 /*  -----------------------------------------------------  レスポンシブ(650px)  -------------------------------------------------*/
 

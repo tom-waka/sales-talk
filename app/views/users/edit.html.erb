@@ -32,7 +32,10 @@
             });
           });
         </script>
-        <div class="remove_picture_btn"><%= f.check_box :remove_picture %>アイコンを削除する</div>
+        <div class="remove_checkbox">
+          <%= f.check_box :remove_picture %>
+          <label for="user_remove_picture">アイコンを削除する</label>
+        </div>
       </div>
     </div>
 

@@ -1,10 +1,26 @@
 <% provide(:title, "ユーザー一覧") %>
 
+<div class="my_container">
+
 <div class="section-title">ユーザー一覧</div> 
 
 <% @users.each do |user| %>
-  <%= link_to user.name, user %>
-  <% if !user.admin? %>
-    <%= link_to "削除", user_path(user), method: :delete, data: {confirm: "ユーザー「#{user.name}」を削除します。よろしいですか？"} %>
-  <% end %>
+  <div class="user_box">
+    <div class="user">
+      <% if user.picture? %>
+        <%= link_to image_tag(user.picture.url, class: "user-icon"), user %>
+      <% else %>
+        <%= link_to image_tag('default_icon.png', class: "user-icon"), user %>
+      <% end %>
+        <%= link_to "#{user.name.truncate(10)}", user, {class: "user-name"} %>
+    </div>
+    <div class="delete">
+      <% if !user.admin? %>
+        <%= link_to "削除", user_path(user), method: :delete, data: {confirm: "ユーザー「#{user.name}」を削除します。よろしいですか？"} %>
+      <% end %>
+    </div>
+  </div>
+  <%= paginate @users, window: 2, left: 1, right: 1 %>
 <% end %>
+
+</div>
