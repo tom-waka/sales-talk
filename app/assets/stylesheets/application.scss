@@ -299,9 +299,9 @@ a{
 
 /*  ------------------------------------------------  記事一覧 article#index ---------------------------------------------*/
 
-.grid{
-  @include basic_grid;
-}
+  .grid{
+    @include basic_grid;
+  }
 
 .article-item{
   position:relative;
@@ -617,6 +617,9 @@ a{
 .page-item.active .page-link {
   background-color: $main-color3;
   border-color: $main-color3;
+}
+.displayed_results{
+  text-align: center;
 }
 
 /*  ------------------------------------------------  ユーザー一覧 users#index ---------------------------------------------*/
