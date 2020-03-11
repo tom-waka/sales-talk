@@ -1,11 +1,11 @@
 require 'rails_helper'
 
-RSpec.feature "Articles", type: :feature do
+RSpec.describe "Articles", type: :system do
 
   let(:user) {create(:user)}
   let(:article) {build(:article)}
 
-  scenario "ユーザーが新しい記事を投稿" do
+  it "ユーザーが新しい記事を投稿" do
     login(user)
     visit new_article_path
     fill_in 'article[title]', with: article.title
@@ -15,7 +15,7 @@ RSpec.feature "Articles", type: :feature do
     expect(Article.count).to eq 1
   end
 
-  scenario "ユーザーが記事を編集" do
+  it "ユーザーが記事を編集" do
     login(user)
     visit edit_article_path(article)
     fill_in 'article[title]', with: "編集後のタイトル"

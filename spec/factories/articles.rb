@@ -3,6 +3,6 @@ FactoryBot.define do
     sequence(:id)  { |n| "#{n}"}
     title {"title"}
     content {"content"}
-    association :user
+    user
   end
 end
