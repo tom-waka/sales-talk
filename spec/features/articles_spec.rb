@@ -15,4 +15,15 @@ RSpec.feature "Articles", type: :feature do
     expect(Article.count).to eq 1
   end
 
+  scenario "ユーザーが記事を編集" do
+    login(user)
+    visit edit_article_path(article)
+    fill_in 'article[title]', with: "編集後のタイトル"
+    fill_in "article[content]", with: "編集後のコンテント"
+    click_button "更新する"
+    expect(page).to have_content "記事を更新しました" 
+    expect(current_path).to eq article_path(article)
+    expect(Article.count).to eq 1
+  end
+
 end
