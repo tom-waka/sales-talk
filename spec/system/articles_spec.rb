@@ -44,6 +44,22 @@ RSpec.describe 'Articles', type: :system do
           expect(page).to have_content 'タイトル1'
         end
       end
+
+      context '「一覧へ戻る」の変遷確認' do
+        it 'root_pathへ戻る' do
+          visit root_path
+          visit article_path(article_1)
+          click_link('一覧へ戻る')
+          expect(current_path).to eq(root_path)
+        end
+
+        it 'ユーザーページへ戻る' do
+          visit user_path(user_1)
+          visit article_path(article_1)
+          click_link('一覧へ戻る')
+          expect(current_path).to eq(user_path(user_1))
+        end
+      end
     end
       
     describe '記事の編集' do
