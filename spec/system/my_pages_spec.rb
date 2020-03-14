@@ -5,6 +5,7 @@ RSpec.describe "MyPages", type: :system do
     let (:user_1) {create(:user, name: 'ユーザー1', email: 'user1@sample.com')}
     let (:user_2) {create(:user, name: 'ユーザー2', email: 'user2@sample.com')}
     let (:admin_user) {create(:user, name: 'アドミン', email: 'admin@sample.com', admin: 'true')}
+    let (:tester) {create(:user, name: 'テストユーザー', email: 'test@sample.com', test_user: 'true')}
     
     context 'マイページの表示' do
       it '表示成功' do
@@ -50,6 +51,22 @@ RSpec.describe "MyPages", type: :system do
           click_button '更新する'
           expect(page).to have_content 'ユーザー情報を更新しました'
           expect(current_path).to eq(user_path(user_1))
+        end
+      end
+
+      context 'テストユーザーでログインした時' do
+        it '編集リンクの表示なし' do
+          login_as(tester)
+          visit user_path(tester)
+          expect(current_path).to eq(user_path(tester))
+          expect(page).to have_no_link '登録情報を編集する'
+        end
+
+        it '編集ページへアクセス不可' do
+          login_as(tester)
+          visit edit_user_path(tester)
+          expect(page).to have_content 'テストユーザーの情報は編集できません'
+          expect(current_path).to eq(user_path(tester))
         end
       end
 

@@ -5,7 +5,9 @@ RSpec.describe 'Articles', type: :system do
     let (:user_1) {create(:user, name: 'ユーザー1', email: 'user1@sample.com')}
     let (:user_2) {create(:user, name: 'ユーザー2', email: 'user2@sample.com')}
     let (:admin_user) {create(:user, name: 'アドミン', email: 'admin@sample.com', admin: 'true')}
+    let (:tester) {create(:user, name: 'テストユーザー', email: 'test@sample.com', test_user: 'true')}
     let (:article_1) {create(:article, title: 'タイトル1', user: user_1)}
+    let (:article_test) {create(:article, title: 'テストユーザーの投稿', user: tester)}
 
 
     describe '記事の新規投稿' do
@@ -127,7 +129,7 @@ RSpec.describe 'Articles', type: :system do
       end
 
       context 'adminとしてログインしている場合' do
-        it 'adminユーザーは編集リンクが表示される' do
+        it 'adminユーザーは削除リンクが表示される' do
           login_as(admin_user)
           visit article_path(article_1)
           expect(page).to have_link '削除'
@@ -140,6 +142,14 @@ RSpec.describe 'Articles', type: :system do
           page.driver.browser.switch_to.alert.accept
           expect(page).to have_content '記事を削除しました'
           expect(Article.count).to eq 0 
+        end
+      end
+
+      context 'テストユーザーとしてログインしている場合' do
+        it 'テストユーザーは削除リンクが表示されない' do
+          login_as(tester)
+          visit article_path(article_test)
+          expect(page).to have_no_link '削除'
         end
       end
 
