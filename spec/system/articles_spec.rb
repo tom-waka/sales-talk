@@ -4,6 +4,7 @@ RSpec.describe 'Articles', type: :system do
   describe '記事のCRUD' do
     let (:user_1) {create(:user, name: 'ユーザー1', email: 'user1@sample.com')}
     let (:user_2) {create(:user, name: 'ユーザー2', email: 'user2@sample.com')}
+    let (:admin_user) {create(:user, name: 'アドミン', email: 'admin@sample.com', admin: 'true')}
     let (:article_1) {create(:article, title: 'タイトル1', user: user_1)}
 
 
@@ -16,6 +17,7 @@ RSpec.describe 'Articles', type: :system do
           fill_in 'article[content]', with: '内容を入力'
           click_button '投稿する'
           expect(page).to have_content '記事を投稿しました'
+          expect(Article.count).to eq 1
         end
       end
 
@@ -81,7 +83,29 @@ RSpec.describe 'Articles', type: :system do
         end
       end
 
+      context 'adminとしてログインした場合' do
+        it 'adminユーザーは編集リンクが表示される' do
+          login_as(admin_user)
+          visit article_path(article_1)
+          expect(page).to have_link '編集'
+        end
+
+        it 'adminユーザーは他ユーザー記事の編集可能' do
+          login_as(admin_user)
+          visit edit_article_path(article_1)
+          fill_in 'article[title]', with: 'タイトルを編集'
+          fill_in 'article[content]', with: '内容を編集'
+          click_button '更新する'
+          expect(page).to have_content '記事を更新しました'
+        end
+      end
+
       context 'ログイン前' do
+        it '編集リンクが表示されない' do
+          visit article_path(article_1)
+          expect(page).to have_no_link '編集'
+        end
+
         it '編集ページへアクセス不可' do
           visit edit_article_path(article_1)
           expect(current_path).to eq(login_path)
@@ -98,6 +122,31 @@ RSpec.describe 'Articles', type: :system do
           click_link('削除')
           page.driver.browser.switch_to.alert.accept
           expect(page).to have_content '記事を削除しました'
+          expect(Article.count).to eq 0 
+        end
+      end
+
+      context 'adminとしてログインしている場合' do
+        it 'adminユーザーは編集リンクが表示される' do
+          login_as(admin_user)
+          visit article_path(article_1)
+          expect(page).to have_link '削除'
+        end
+
+        it 'adminユーザーは他ユーザーの記事を削除可能' do
+          login_as(admin_user)
+          visit article_path(article_1)
+          click_link('削除')
+          page.driver.browser.switch_to.alert.accept
+          expect(page).to have_content '記事を削除しました'
+          expect(Article.count).to eq 0 
+        end
+      end
+
+      context 'ログイン前' do
+        it '削除リンクが表示されない' do
+          visit article_path(article_1)
+          expect(page).to have_no_link '削除'
         end
       end
     end
