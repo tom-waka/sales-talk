@@ -4,5 +4,10 @@
 
 <div class="section-title">投稿一覧</div> 
 
+<%= search_form_for @q do |f| %>
+  <%= f.search_field :title_cont %>
+  <%= f.submit "検索", class: "btn btn-search" %>
+<% end %>
+
 <%= render partial: 'shared/articles_grid', locals: { object: @articles } %>
 <%= paginate @articles, window: 2, left: 1, right: 1 %>

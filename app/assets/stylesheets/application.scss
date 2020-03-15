@@ -299,6 +299,20 @@ a{
 
 /*  ------------------------------------------------  記事一覧 article#index ---------------------------------------------*/
 
+  .article_search{
+    display: flex;
+    flex-direction: column;
+    margin-top: 1rem;
+    #q_title_cont{
+      border-style: solid;
+      margin: 1rem auto;
+      width: 19rem;
+    }
+    .btn-search{
+      margin: auto;
+    }
+  }
+
   .grid{
     @include basic_grid;
   }

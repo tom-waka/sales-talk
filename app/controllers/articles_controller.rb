@@ -5,7 +5,8 @@ class ArticlesController < ApplicationController
   before_action :can_not_delete, only:[:destroy]
 
   def index
-    @articles = Article.order(created_at: :desc).page(params[:page]).per(6)
+    @q = Article.ransack(params[:q])
+    @articles = @q.result(distinct: true).page(params[:page]).per(6)
   end
 
   def show
