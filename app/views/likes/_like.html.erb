@@ -1,12 +1,12 @@
 <div class="likes_count">
   <% if logged_in?  %>
     <% if article.liked_by?(current_user) %>
-      <%= link_to article_likes_path(article.id), method: :delete, remote: true  do %>
+      <%= link_to article_likes_path(article.id), method: :delete, remote: true do %>
         <i class="fas fa-heart like"></i>
       <% end %>
       <div class="counter"><%= article.likes.size %></div>
     <% else %>
-      <%= link_to article_likes_path(article.id), method: :post, remote: true  do %>
+      <%= link_to article_likes_path(article.id), method: :post, remote: true do %>
         <i class="fas fa-heart unlike"></i>
       <% end %>
       <div class="counter"><%= article.likes.size %></div>
