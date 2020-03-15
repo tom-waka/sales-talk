@@ -5,7 +5,7 @@
 <div class="section-title">投稿一覧</div> 
 
 <%= search_form_for @q do |f| %>
-  <%= f.search_field :title_cont %>
+  <%= f.search_field :title_cont, placeholder: "記事タイトルから検索" %>
   <%= f.submit "検索", class: "btn btn-search" %>
 <% end %>
 
