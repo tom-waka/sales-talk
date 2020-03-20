@@ -12,7 +12,7 @@
     <%= f.label :content, "好きなモノについて紹介してください" %>
     <%= f.text_area :content,  rows: 25 , placeholder: "好きなモノの概要、おすすめポイント等"%>
 
-    <%= f.label :category, 'カテゴリ' %>
+    <%= f.label :category, 'カテゴリー' %>
     <%= f.collection_radio_buttons(:category_id, Category.all, :id, :name) do |b| %>
       <%= b.label do %>
         <%= b.radio_button %>
