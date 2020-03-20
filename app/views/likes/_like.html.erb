@@ -4,17 +4,17 @@
       <%= link_to article_likes_path(article.id), method: :delete, remote: true do %>
         <i class="fas fa-heart like"></i>
       <% end %>
-      <div class="counter"><%= article.likes.size %></div>
+      <div class="counter"><%= article.likes_count %></div>
     <% else %>
       <%= link_to article_likes_path(article.id), method: :post, remote: true do %>
         <i class="fas fa-heart unlike"></i>
       <% end %>
-      <div class="counter"><%= article.likes.size %></div>
+      <div class="counter"><%= article.likes_count %></div>
     <% end %>
   <% else %>
     <%= link_to login_path do %>
       <i class="fas fa-heart negative"></i>
     <% end %>
-    <div class="counter"><%= article.likes.size %></div>
+    <div class="counter"><%= article.likes_count %></div>
   <% end %>
 </div>
