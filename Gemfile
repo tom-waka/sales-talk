@@ -11,6 +11,7 @@ gem 'jquery-rails'
 gem 'font-awesome-sass'
 gem 'ransack'
 gem 'counter_culture'
+gem "actionview"
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.4', '>= 5.2.4.1'
