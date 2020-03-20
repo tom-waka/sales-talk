@@ -2,8 +2,8 @@ require 'rails_helper'
 
 RSpec.describe "MyPages", type: :system do
   describe 'マイページの挙動' do
-    let (:user_1) {create(:user, name: 'ユーザー1', email: 'user1@sample.com')}
-    let (:user_2) {create(:user, name: 'ユーザー2', email: 'user2@sample.com')}
+    let (:user_1) {create(:user)}
+    let (:user_2) {create(:user)}
     let (:admin_user) {create(:user, name: 'アドミン', email: 'admin@sample.com', admin: 'true')}
     let (:tester) {create(:user, name: 'テストユーザー', email: 'test@sample.com', test_user: 'true')}
     
@@ -80,7 +80,7 @@ RSpec.describe "MyPages", type: :system do
           click_link '退会する'
           page.driver.browser.switch_to.alert.accept
           expect(current_path).to eq(root_path)
-          expect(page).to have_content 'ユーザー「ユーザー1」は削除されました'
+          expect(page).to have_content 'は削除されました'
           expect(User.count).to eq 0
         end
       end
@@ -101,7 +101,7 @@ RSpec.describe "MyPages", type: :system do
           click_link 'ユーザーを削除する'
           page.driver.browser.switch_to.alert.accept
           expect(current_path).to eq(users_path)
-          expect(page).to have_content 'ユーザー「ユーザー1」は削除されました'
+          expect(page).to have_content 'は削除されました'
           expect(User.count).to eq 1
         end
       end
