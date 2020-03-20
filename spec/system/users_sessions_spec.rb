@@ -3,13 +3,13 @@ require 'rails_helper'
 RSpec.describe "UsersSessions", type: :system do
 
   describe 'ログイン・ログアウト機能の確認' do
-    let (:user_1) {create(:user, name: 'ユーザー1', email: 'user1@sample.com')}
+    let (:user) {create(:user)}
     let (:admin_user) {create(:user, name: 'アドミン', email: 'admin@sample.com', admin: 'true')}
 
     describe 'ログイン前' do
       it 'ログイン成功' do
         visit login_path
-        fill_in 'メールアドレス', with: user_1.email
+        fill_in 'メールアドレス', with: user.email
         fill_in 'パスワード', with: 'foobar'
         click_button 'ログインする'
         expect(page).to have_content 'ログインしました'
@@ -34,7 +34,7 @@ RSpec.describe "UsersSessions", type: :system do
     describe 'ログイン後' do
       before do
         visit login_path
-        fill_in 'メールアドレス', with: user_1.email
+        fill_in 'メールアドレス', with: user.email
         fill_in 'パスワード', with: 'foobar'
         click_button 'ログインする'
         expect(page).to have_content 'ログインしました'          
