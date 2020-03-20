@@ -2,12 +2,13 @@ require 'rails_helper'
 
 RSpec.describe 'Articles', type: :system do
   describe '記事のCRUD' do
-    let (:user_1) {create(:user, name: 'ユーザー1', email: 'user1@sample.com')}
-    let (:user_2) {create(:user, name: 'ユーザー2', email: 'user2@sample.com')}
+    let (:user_1) {create(:user)}
+    let (:user_2) {create(:user)}
     let (:admin_user) {create(:user, name: 'アドミン', email: 'admin@sample.com', admin: 'true')}
     let (:tester) {create(:user, name: 'テストユーザー', email: 'test@sample.com', test_user: 'true')}
     let (:article_1) {create(:article, title: 'タイトル1', user: user_1)}
     let (:article_test) {create(:article, title: 'テストユーザーの投稿', user: tester)}
+    let! (:category) {create(:category)}
 
 
     describe '記事の新規投稿' do
@@ -17,6 +18,8 @@ RSpec.describe 'Articles', type: :system do
           visit new_article_path
           fill_in 'article[title]', with: 'タイトルを入力'
           fill_in 'article[content]', with: '内容を入力'
+          save_and_open_page
+          choose '本'
           click_button '投稿する'
           expect(page).to have_content '記事を投稿しました'
           expect(Article.count).to eq 1
