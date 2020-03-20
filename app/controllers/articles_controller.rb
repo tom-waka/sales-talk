@@ -5,7 +5,7 @@ class ArticlesController < ApplicationController
   before_action :can_not_delete, only:[:destroy]
 
   def index
-    @q = Article.ransack(params[:q])
+    @q = Article.includes([:user]).ransack(params[:q])
     @articles = @q.result(distinct: true).page(params[:page]).per(6)
   end
 
