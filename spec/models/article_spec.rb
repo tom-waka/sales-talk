@@ -22,6 +22,12 @@ RSpec.describe Article, type: :model do
         expect(article.valid?).to eq(false)
         expect(article.errors[:title]).to include("は50文字以内で入力してください")
       end
+
+      it "カテゴリが未選択のため無効" do
+        article = build(:article, category: nil)
+        expect(article.valid?).to eq(false)
+        expect(article.errors[:category]).to include("を入力してください")
+      end
     end
 
   end
