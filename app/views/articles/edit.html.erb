@@ -2,24 +2,4 @@
 
 <div class="section-title">記事の編集</div> 
 
-<div class="my_container">
-  <%= form_with model: @article, local: true do |f| %>
-    <p><%= render partial: 'shared/error_messages', locals: { object: f.object } %></p>
-
-    <%= f.label :title, "タイトル(５０文字以内)" %>
-    <%= f.text_area :title,  rows: 3 %>
-
-    <%= f.label :content, "好きなモノについて紹介してください" %>
-    <%= f.text_area :content,  rows: 25 %>
-
-    <%= f.label :category, 'カテゴリー' %>
-    <%= f.collection_radio_buttons(:category_id, Category.all, :id, :name) do |b| %>
-      <%= b.label do %>
-        <%= b.radio_button %>
-        <%= b.text %>
-      <% end %>
-    <% end %>
-
-    <%= f.submit "更新する", class: "btn" %>
-  <% end %>
-</div>
+<%= render partial: 'article_form' %>
