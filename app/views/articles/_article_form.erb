@@ -2,20 +2,25 @@
   <%= form_with model: @article, local: true do |f| %>
     <p><%= render partial: 'shared/error_messages', locals: { object: f.object } %></p>
 
+    <div class="category_zone">
+      <%= f.label :category, 'カテゴリー', {class: 'category_label'} %>
+      <div class="category_btns">
+        <%= f.collection_radio_buttons(:category_id, Category.all, :id, :name) do |b| %>
+          <%= b.label(class: "category_btn") do %>
+            <%= b.radio_button %>
+            <%= b.text %>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+
     <%= f.label :title, "タイトル(５０文字以内)" %>
     <%= f.text_area :title,  rows: 3 , placeholder: "例：絶対に一度は見るべき映画を紹介します。" %>
 
     <%= f.label :content, "好きなモノについて紹介してください" %>
     <%= f.text_area :content,  rows: 25 , placeholder: "好きなモノの概要、おすすめポイント等"%>
 
-    <%= f.label :category, 'カテゴリー' %>
-    <%= f.collection_radio_buttons(:category_id, Category.all, :id, :name) do |b| %>
-      <%= b.label do %>
-        <%= b.radio_button %>
-        <%= b.text %>
-      <% end %>
-    <% end %>
-
     <%= f.submit(class: "btn")%>
   <% end %>
+
 </div>
