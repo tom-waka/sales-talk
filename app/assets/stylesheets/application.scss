@@ -315,6 +315,7 @@ a{
         border-style: solid;
         border-color: $main-color3;
         border-radius: 0.3rem;
+        border-width: 0.1rem;
         background-color: $main-color2;
         margin: 1rem auto 0;
         width: 19rem;
@@ -325,7 +326,9 @@ a{
     }
     .category_search{
       #q_category_id_eq{
+        -moz-appearance: button;
         -webkit-appearance: button;
+        appearance: button;
         border-style: solid;
         border-color: $main-color3;
         border-radius: 0.3rem;
@@ -333,8 +336,8 @@ a{
         background-color: $main-color2;
         margin: 1rem auto;
         width: 14rem;
-        text-align: center;
         height: 2rem;
+        text-indent: 0.5rem;
       }
     }
     .btn-search{
