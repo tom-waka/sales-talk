@@ -35,6 +35,12 @@ a{
   }
 }
 
+.no_articles{
+  margin-top: 2rem;
+  text-align: center;
+  font-size: 1.2rem;
+}
+
 @mixin basic_container{
   max-width: 615px;
   margin: 0.5rem auto;
@@ -551,11 +557,6 @@ a{
   
   .grid{
     @include basic_grid;
-  }
-  .no_articles{
-    margin-top: 1rem;
-    text-align: center;
-    font-size: 1.2rem;
   }
 
 /*  -----------------------------  送信フォーム  ----------------------------------------------------*/
