@@ -19,5 +19,9 @@
   <% end %>
 <% end %>
 
+<% unless @articles.present? %>
+  <div class="no_articles">記事が見つかりませんでした</div>
+<% end %>
+
 <%= render partial: 'shared/articles_grid', locals: { object: @articles } %>
 <%= paginate @articles, window: 2, left: 1, right: 1 %>
