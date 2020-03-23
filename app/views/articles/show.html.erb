@@ -2,7 +2,7 @@
 
 <div class="my_container">
 
-  <%= @article.category.name %> 
+  <div class="article_category">カテゴリー: <%= @article.category.name %></div>
 
   <p class="title"><%= safe_join(@article.title.split("\n"),tag(:br)) %></p>
 
