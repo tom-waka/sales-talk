@@ -6,7 +6,7 @@ class ArticlesController < ApplicationController
 
   def index
     @categories = Category.all
-    @q = Article.includes([:user]).ransack(params[:q])
+    @q = Article.includes([:user],[:category]).ransack(params[:q])
     @articles = @q.result(distinct: true).page(params[:page]).per(6)
   end
 
