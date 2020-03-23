@@ -433,6 +433,9 @@ a{
 
 .my_container{
   @include basic_container;
+  .article_category{
+    text-align: left;
+  }
   .title{
     text-align: center;
     margin-bottom: 2.0rem;
