@@ -1,15 +1,18 @@
 require 'rails_helper'
 
 RSpec.describe 'Articles', type: :system do
-  describe '記事のCRUD' do
+  describe '記事関連の検証' do
     let (:user_1) {create(:user)}
     let (:user_2) {create(:user)}
     let (:admin_user) {create(:user, name: 'アドミン', email: 'admin@sample.com', admin: 'true')}
     let (:tester) {create(:user, name: 'テストユーザー', email: 'test@sample.com', test_user: 'true')}
-    let (:article_1) {create(:article, title: 'タイトル1', user: user_1)}
+    let (:article_1) {create(:article, title: 'タイトル1', user: user_1, category: category_1)}
+    let (:article_2) {create(:article, title: 'タイトル2', user: user_1, category: category_1)}
+    let (:article_3) {create(:article, title: 'タイトル3', user: user_1, category: category_2)}
     let (:article_test) {create(:article, title: 'テストユーザーの投稿', user: tester)}
-    let! (:category) {create(:category)}
-
+    let! (:category_1) {create(:category)}
+    let! (:category_2) {create(:category, name: '映像')}
+    let! (:category_3) {create(:category, name: '音楽')}
 
     describe '記事の新規投稿' do
       context '成功時の挙動' do
@@ -18,7 +21,6 @@ RSpec.describe 'Articles', type: :system do
           visit new_article_path
           fill_in 'article[title]', with: 'タイトルを入力'
           fill_in 'article[content]', with: '内容を入力'
-          save_and_open_page
           choose '本'
           click_button '投稿する'
           expect(page).to have_content '記事を投稿しました'
@@ -164,5 +166,62 @@ RSpec.describe 'Articles', type: :system do
       end
     end
 
+    describe '検索機能の検証' do
+      before do
+        article_1
+        article_2
+        article_3
+        visit articles_path
+      end
+      context 'キーワード検索' do
+        it '合致した記事だけ表示' do
+          fill_in 'q[title_or_content_cont]', with: 'タイトル1'
+          click_button '検索'
+          expect(page).to have_link 'タイトル1'
+          expect(page).to have_no_link 'タイトル2'
+        end
+
+        it '記事が見つからない時、メッセージを表示' do
+          fill_in 'q[title_or_content_cont]', with: 'タイトル4'
+          click_button '検索'
+          expect(page).to have_no_selector '.article-item'
+          expect(page).to have_content '記事が見つかりませんでした'
+        end
+      end
+
+      context 'カテゴリー検索' do
+        it '合致した記事だけ表示' do
+          select '本', from: 'カテゴリー', match: :first
+          click_button '検索'
+          expect(page).to have_link 'タイトル1'
+          expect(page).to have_no_link 'タイトル3'
+        end
+
+        it '記事が見つからない時、メッセージを表示' do
+          select '音楽', from: 'カテゴリー', match: :first
+          click_button '検索'
+          expect(page).to have_no_selector '.article-item'
+          expect(page).to have_content '記事が見つかりませんでした'
+        end
+      end
+
+      context 'キーワード×カテゴリー検索' do
+        it '合致した記事だけ表示' do
+          fill_in 'q[title_or_content_cont]', with: 'タイトル1'
+          select '本', from: 'カテゴリー', match: :first
+          click_button '検索'
+          expect(page).to have_link 'タイトル1'
+          expect(page).to have_no_link 'タイトル2'
+        end
+
+        it '記事が見つからない時、メッセージを表示' do
+          fill_in 'q[title_or_content_cont]', with: '不一致'
+          select '本', from: 'カテゴリー', match: :first
+          click_button '検索'
+          expect(page).to have_no_selector '.article-item'
+          expect(page).to have_content '記事が見つかりませんでした'
+        end
+      end
+    end
   end
 end
