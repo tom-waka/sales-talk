@@ -154,6 +154,14 @@ $category-color4: rgba(191, 81, 255, 0.6);
   border-radius: 1rem;
   color: white;
 }
+@mixin article_show_category{
+  text-align: left;
+  width: fit-content;
+  font-size: 0.8rem;
+  padding: 0 0.5rem;
+  border-radius: 1rem;
+  color: white;
+}
 
 
 .section-title{
@@ -567,6 +575,23 @@ $category-color4: rgba(191, 81, 255, 0.6);
   .link_to_back{
     margin-top: 2rem;
     text-align: center;
+  }
+
+  .category_1{
+    @include article_show_category;
+    background-color: $category-color1;
+  }
+  .category_2{
+    @include article_show_category;
+    background-color: $category-color2;
+  }  
+  .category_3{
+    @include article_show_category;
+    background-color: $category-color3;
+  }
+  .category_4{
+    @include article_show_category;
+    background-color: $category-color4;
   }
 }
 
