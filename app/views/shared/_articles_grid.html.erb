@@ -20,7 +20,7 @@
         <div class="category_<%=article.category.id%>"><%= article.category.name %></div>
 
         <div class="title-zone">
-          <%= link_to article.title, article%>
+          <%= link_to safe_join(article.title.split("\n"),tag(:br)), article%>
         </div>
 
         <div class="likes_count">
