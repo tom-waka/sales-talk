@@ -1,0 +1,2 @@
+$('#feed').html("<%= j(render partial: 'shared/articles_grid', locals: { object: @articles }) %>");
+$('#paginate').html("<%= j(paginate @articles, window: 2, left: 1, right: 1) %>");
