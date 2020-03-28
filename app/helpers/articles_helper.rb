@@ -5,7 +5,6 @@ module ArticlesHelper
     URI.extract(text, ['http','https'] ).uniq.each do |url|
       sub_text = ""
       sub_text << "<a href=" << url << " target=\"_blank\">" << url << "</a>"
-   
       text.gsub!(url, sub_text)
     end
     text
@@ -13,7 +12,8 @@ module ArticlesHelper
 
   def selected_sort
     if params[:q].nil?
-      params[:q] = @articles
+      params[:q] = @q
+      params[:q] = {sorts: 'created_at desc'}
     else
       params[:q][:sorts]
     end
