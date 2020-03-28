@@ -10,4 +10,12 @@ module ArticlesHelper
     end
     text
   end
+
+  def selected_sort
+    if params[:q].nil?
+      params[:q] = @articles
+    else
+      params[:q][:sorts]
+    end
+  end
 end

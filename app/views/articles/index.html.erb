@@ -10,8 +10,13 @@
   </div>
 
   <div class="category_search">
-    <%= f.label :category_id_eq, "カテゴリー" %>
+    <%= f.label :category_id_eq, 'カテゴリー' %>
     <%= f.collection_select(:category_id_eq, @categories, :id, :name, {:include_blank => '指定なし'}) %>
+  </div>
+
+  <div class="sort_search">
+    <%= f.label :sorts, '　　表示順' %>
+    <%= f.select :sorts, {'最新順': 'created_at desc', 'いいね順': 'likes_count desc' }, { selected: selected_sort } %>
   </div>
 
   <%= f.button :type => "submit", class: "btn btn-search" do %>
