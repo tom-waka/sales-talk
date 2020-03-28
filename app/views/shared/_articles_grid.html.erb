@@ -1,4 +1,7 @@
 <div class="wrapper">
+  <% unless object.present? %>
+    <div class="no_articles">記事が見つかりませんでした</div>
+  <% end %>
   <div class="grid">
     <% object.each do |article| %>
       <div class="article-item">

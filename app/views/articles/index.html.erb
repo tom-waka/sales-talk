@@ -4,7 +4,7 @@
 
 <div class="section-title">投稿一覧</div> 
 
-<%= search_form_for @q do |f| %>
+<%= search_form_for @q, remote: true do |f| %>
   <div class="keyword_search">
     <%= f.search_field :title_or_content_cont, placeholder: "記事をキーワード検索" %>
   </div>
@@ -19,14 +19,15 @@
     <%= f.select :sorts, {'最新順': 'created_at desc', 'いいね順': 'likes_count desc' }, { selected: selected_sort } %>
   </div>
 
-  <%= f.button :type => "submit", class: "btn btn-search" do %>
+  <%= f.button :type => "submit", class: "btn btn-search"  do %>
     <i class="fas fa-search"></i>  検索
   <% end %>
 <% end %>
 
-<% unless @articles.present? %>
-  <div class="no_articles">記事が見つかりませんでした</div>
-<% end %>
+<div id="feed">
+  <%= render partial: 'shared/articles_grid', locals: { object: @articles } %>
+</div>
 
-<%= render partial: 'shared/articles_grid', locals: { object: @articles } %>
-<%= paginate @articles, window: 2, left: 1, right: 1 %>
+<div id="paginate">
+  <%= paginate @articles, window: 2, left: 1, right: 1 %>
+</div>

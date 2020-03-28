@@ -35,12 +35,6 @@ a{
   }
 }
 
-.no_articles{
-  margin-top: 2rem;
-  text-align: center;
-  font-size: 1.2rem;
-}
-
 @mixin basic_container{
   max-width: 615px;
   margin: 0.5rem auto;
@@ -387,6 +381,11 @@ $category-color4: rgba(191, 81, 255, 0.6);
   .wrapper{
     max-width: 1400px;
     margin: 0 auto;
+    .no_articles{
+      margin-top: 2rem;
+      text-align: center;
+      font-size: 1.2rem;
+    }
   }
   .grid{
     @include basic_grid;
