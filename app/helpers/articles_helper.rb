@@ -12,7 +12,6 @@ module ArticlesHelper
 
   def selected_sort
     if params[:q].nil?
-      params[:q] = @q
       params[:q] = {sorts: 'created_at desc'}
     else
       params[:q][:sorts]
