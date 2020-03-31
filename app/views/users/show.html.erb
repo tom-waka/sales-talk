@@ -1,6 +1,5 @@
 <% provide(:title, @user.name) %>
 
-<%= @likes %> 
 <div class="my_container">
   <div class="user_info">
     <% if @user.picture? %>
@@ -9,17 +8,17 @@
       <%= image_tag 'default_icon.png', class: "user-icon" %>
     <% end %>
     <div class="user-name"><%= @user.name %></div>
+    <div class="likes_score">
+      営業成績(獲得いいね数)
+      <div class="total_likes"><%= total_likes(@user_articles) %>件</div>
+    </div>
   </div>
   <%= render 'edit_btn' %>
 </div>
 
 <div class="section-title">営業履歴</div> 
-<% unless @user.articles.present? %>
-  <div class="no_articles">営業履歴はありません</div>
-<% end %>
-
-<%= render partial: 'shared/articles_grid', locals: { object: @user_articles } %>
-<%= paginate @user_articles, window: 2, left: 1, right: 1 %>
+<%= render partial: 'shared/articles_grid', locals: { object: @user_articles_pages } %>
+<%= paginate @user_articles_pages, window: 2, left: 1, right: 1 %>
 
 <div class="my_container">
   <%= render 'delete_btn' %>
