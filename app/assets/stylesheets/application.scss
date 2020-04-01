@@ -622,9 +622,23 @@ $category-color4: rgba(191, 81, 255, 0.6);
     .user-name{
       font-size: 1.2rem;
     }
-    .likes_score{
-      margin-top: 1rem;
-      font-size: 1.5rem;
+    .score{
+      display: flex;
+      margin-top: 2rem;
+      justify-content: space-around;
+      .score_section{
+        justify-content: center;
+        align-items: center;
+        .score_title{
+          font-size: 1.3rem;
+          border-bottom: solid;
+          border-color: $main-color3;
+        }
+        span{
+          font-size: 2.5rem;
+          margin-right: 0.2rem;
+        }
+      }
     }
   }
   
@@ -846,6 +860,7 @@ $category-color4: rgba(191, 81, 255, 0.6);
   }
 
   .user_info{
+    padding: 2rem 1rem;
     .user-icon{
       width: 7rem;
       height: 7rem;
@@ -853,8 +868,17 @@ $category-color4: rgba(191, 81, 255, 0.6);
     .user-name{
       font-size: 1.0rem;
     }
-    .likes_score{
-      font-size: 1.2rem;
+    .score{
+      .score_section{
+        justify-content: center;
+        align-items: center;
+        .score_title{
+          font-size: 0.9rem;
+        }
+        span{
+          font-size: 2rem;
+        }
+      }
     }
   }
 
@@ -912,6 +936,20 @@ $category-color4: rgba(191, 81, 255, 0.6);
     .introduce{
       font-size: 0.9rem;
       margin-bottom: 0.5rem;
+    }
+  }
+
+  .user_info{
+    padding: 2rem 0.5rem;
+    .score{
+      .score_section{
+        .score_title{
+          font-size: 0.85rem;
+        }
+        span{
+          font-size: 1.5rem;
+        }
+      }
     }
   }
 
