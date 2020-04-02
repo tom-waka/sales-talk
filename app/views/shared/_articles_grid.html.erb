@@ -1,6 +1,6 @@
 <div class="wrapper">
   <% unless object.any? %>
-    <div class="no_articles">該当する記事はありません</div>
+    <div class="no_articles" data-testid="no_articles">該当する記事はありません</div>
   <% end %>
   <div class="grid">
     <% object.each do |article| %>
