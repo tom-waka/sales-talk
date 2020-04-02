@@ -185,7 +185,7 @@ RSpec.describe 'Articles', type: :system do
           fill_in 'q[title_or_content_cont]', with: 'タイトル4'
           click_button '検索'
           expect(page).to have_no_selector '.article-item'
-          expect(page).to have_content '該当する記事はありません'
+          find("[data-testid='no_articles']")
         end
       end
 
@@ -201,7 +201,7 @@ RSpec.describe 'Articles', type: :system do
           select '音楽', from: 'カテゴリー', match: :first
           click_button '検索'
           expect(page).to have_no_selector '.article-item'
-          expect(page).to have_content '該当する記事はありません'
+          find("[data-testid='no_articles']")
         end
       end
 
@@ -219,7 +219,7 @@ RSpec.describe 'Articles', type: :system do
           select '本', from: 'カテゴリー', match: :first
           click_button '検索'
           expect(page).to have_no_selector '.article-item'
-          expect(page).to have_content '該当する記事はありません'
+          find("[data-testid='no_articles']")
         end
       end
     end
