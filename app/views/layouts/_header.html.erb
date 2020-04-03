@@ -11,7 +11,11 @@
               <%= link_to image_tag('default_icon.png', class: "user-icon"), current_user %>
             <% end %>
           </li>
-          <li><%= link_to "新規投稿"  , new_article_path , class: "nav-item" %></li>
+          <li>
+            <%= link_to new_article_path, class: "nav-item"  do  %>
+               <i class="fas fa-pencil-alt"></i>投稿
+            <% end %>
+          </li>
           <li><%= link_to "ログアウト", logout_path , method: :delete , data: {confirm: "ログアウトしますか？"}, class: "nav-item" %></li>
           <% if current_user.admin? %>
             <li><%= link_to "ユーザー一覧"  , users_path , class: "nav-item" %></li>
