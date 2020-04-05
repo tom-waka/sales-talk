@@ -22,7 +22,7 @@ RSpec.describe "MyPages", type: :system do
           visit edit_user_path(user_1)
           fill_in 'メールアドレス', with: 'edit@sample.com'
           click_button '更新する'
-          expect(page).to have_content 'ユーザー情報を更新しました'
+          find("[data-testid='flash_message']")
           expect(current_path).to eq(user_path(user_1))
         end
       end
@@ -38,7 +38,7 @@ RSpec.describe "MyPages", type: :system do
         it '編集ページへアクセス不可' do
           login_as(user_2)
           visit edit_user_path(user_1)
-          expect(page).to have_content 'このURLにはアクセスできません'
+          find("[data-testid='flash_message']")
           expect(current_path).to eq(root_path)
         end
       end
@@ -49,7 +49,7 @@ RSpec.describe "MyPages", type: :system do
           visit edit_user_path(user_1)
           fill_in 'メールアドレス', with: 'edit@sample.com'
           click_button '更新する'
-          expect(page).to have_content 'ユーザー情報を更新しました'
+          find("[data-testid='flash_message']")
           expect(current_path).to eq(user_path(user_1))
         end
       end
@@ -65,7 +65,7 @@ RSpec.describe "MyPages", type: :system do
         it '編集ページへアクセス不可' do
           login_as(tester)
           visit edit_user_path(tester)
-          expect(page).to have_content 'テストユーザーの情報は編集できません'
+          find("[data-testid='flash_message']")
           expect(current_path).to eq(user_path(tester))
         end
       end
@@ -80,7 +80,7 @@ RSpec.describe "MyPages", type: :system do
           click_link '退会する'
           page.driver.browser.switch_to.alert.accept
           expect(current_path).to eq(root_path)
-          expect(page).to have_content 'は削除されました'
+          find("[data-testid='flash_message']")
           expect(User.count).to eq 0
         end
       end
@@ -101,7 +101,7 @@ RSpec.describe "MyPages", type: :system do
           click_link 'ユーザーを削除する'
           page.driver.browser.switch_to.alert.accept
           expect(current_path).to eq(users_path)
-          expect(page).to have_content 'は削除されました'
+          find("[data-testid='flash_message']")
           expect(User.count).to eq 1
         end
       end
