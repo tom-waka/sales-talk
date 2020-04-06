@@ -4,9 +4,13 @@
       <div class="catch_copy"> これ、<br>おすすめ<br>です。</div>
     </div>
     <%= image_tag('mascot.png', alt:'マスコットキャラクター', class: "mascot") %>
-    <p class="introduce">SALES TALKは、自分の好きなモノを皆に紹介するwebサービスです。</p>
-    <p class="introduce">本や映画、音楽など何でもありです。</p>
-    <p class="introduce">営業担当となって、思う存分に売り込んでください！</p>
-    <p class="introduce">↓↓↓</p>
+    <div class="tmp">
+      <p class="introduce">SALES TALKは、自分の好きなモノを皆に紹介するwebサービスです。</p>
+      <p class="introduce">本や映画、音楽など何でもありです。</p>
+      <p class="introduce">営業担当となって、思う存分に売り込んでください！</p>
+
+      <%= link_to "新規登録", signup_path, {class: "btn introduce_btn"} %>
+      <%= link_to "ログイン", login_path, {class: "btn introduce_btn"} %>
+    </div>
   </div>
 </div>
