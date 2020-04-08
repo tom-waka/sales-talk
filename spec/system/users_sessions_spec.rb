@@ -12,7 +12,7 @@ RSpec.describe "UsersSessions", type: :system do
         fill_in 'メールアドレス', with: user.email
         fill_in 'パスワード', with: 'foobar'
         click_button 'ログインする'
-        expect(page).to have_content 'ログインしました'
+        find("[data-testid='flash_message']")
       end
 
       it 'ログイン失敗' do
@@ -20,12 +20,12 @@ RSpec.describe "UsersSessions", type: :system do
         fill_in 'メールアドレス', with: ''
         fill_in 'パスワード', with: 'foobar'
         click_button 'ログインする'
-        expect(page).to have_content 'メールアドレスかパスワードが間違っています'
+        find("[data-testid='flash_message']")
       end
 
       it 'adminでログインしたら、ユーザー一覧のリンク有' do
         login_as(admin_user)
-        expect(page).to have_content 'ログインしました'
+        find("[data-testid='flash_message']")
         expect(current_path).to eq(root_path)
         expect(page).to have_link 'ユーザー一覧'
       end
@@ -37,13 +37,13 @@ RSpec.describe "UsersSessions", type: :system do
         fill_in 'メールアドレス', with: user.email
         fill_in 'パスワード', with: 'foobar'
         click_button 'ログインする'
-        expect(page).to have_content 'ログインしました'          
+        find("[data-testid='flash_message']")        
       end
       it 'ログアウト成功' do
         click_link('ログアウト')
         page.driver.browser.switch_to.alert.accept
         expect(current_path).to eq(root_path)
-        expect(page).to have_content 'ログアウトしました'
+        find("[data-testid='flash_message']")
       end
     end
   end
