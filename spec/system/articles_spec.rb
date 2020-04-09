@@ -23,7 +23,7 @@ RSpec.describe 'Articles', type: :system do
           fill_in 'article[content]', with: '内容を入力'
           choose '本'
           click_button '投稿する'
-          expect(page).to have_content '記事を投稿しました'
+          find("[data-testid='flash_message']")
           expect(Article.count).to eq 1
         end
       end
@@ -79,14 +79,14 @@ RSpec.describe 'Articles', type: :system do
           fill_in 'article[title]', with: 'タイトルを編集'
           fill_in 'article[content]', with: '内容を編集'
           click_button '更新する'
-          expect(page).to have_content '記事を更新しました'
+          find("[data-testid='flash_message']")
         end
 
         it '他ユーザーの記事は編集不可' do
           login_as(user_2)
           visit edit_article_path(article_1)
           expect(current_path).to eq(root_path)
-          expect(page).to have_content 'このURLにはアクセスできません'
+          find("[data-testid='flash_message']")
         end
       end
 
@@ -103,7 +103,7 @@ RSpec.describe 'Articles', type: :system do
           fill_in 'article[title]', with: 'タイトルを編集'
           fill_in 'article[content]', with: '内容を編集'
           click_button '更新する'
-          expect(page).to have_content '記事を更新しました'
+          find("[data-testid='flash_message']")
         end
       end
 
@@ -116,7 +116,7 @@ RSpec.describe 'Articles', type: :system do
         it '編集ページへアクセス不可' do
           visit edit_article_path(article_1)
           expect(current_path).to eq(login_path)
-          expect(page).to have_content 'ログインをしてください'
+          find("[data-testid='flash_message']")
         end
       end
     end
@@ -128,7 +128,7 @@ RSpec.describe 'Articles', type: :system do
           visit article_path(article_1)
           click_link('削除')
           page.driver.browser.switch_to.alert.accept
-          expect(page).to have_content '記事を削除しました'
+          find("[data-testid='flash_message']")
           expect(Article.count).to eq 0 
         end
       end
@@ -145,7 +145,7 @@ RSpec.describe 'Articles', type: :system do
           visit article_path(article_1)
           click_link('削除')
           page.driver.browser.switch_to.alert.accept
-          expect(page).to have_content '記事を削除しました'
+          find("[data-testid='flash_message']")
           expect(Article.count).to eq 0 
         end
       end
