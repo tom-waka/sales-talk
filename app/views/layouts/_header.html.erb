@@ -16,13 +16,25 @@
                <i class="fas fa-pencil-alt"></i>投稿
             <% end %>
           </li>
-          <li><%= link_to "ログアウト", logout_path , method: :delete , data: {confirm: "ログアウトしますか？"}, class: "nav-item" %></li>
+          <li>
+            <%= link_to logout_path , method: :delete , data: {confirm: "ログアウトしますか？"}, class: "nav-item" do %>
+              <i class="fas fa-sign-out-alt"></i>ログアウト
+            <% end %>
+          </li>
           <% if current_user.admin? %>
             <li><%= link_to "ユーザー一覧"  , users_path , class: "nav-item" %></li>
           <% end %>
         <% else %>
-          <li><%= link_to "新規登録"  , signup_path , class: "nav-item" %></li>
-          <li><%= link_to "ログイン", login_path , class: "nav-item" %></li>
+          <li>
+            <%= link_to signup_path, class: "nav-item"  do  %>
+               <i class="fas fa-user-plus"></i>新規登録
+            <% end %>
+          </li>
+          <li>
+            <%= link_to login_path, class: "nav-item"  do  %>
+               <i class="fas fa-sign-in-alt"></i>ログイン
+            <% end %>
+          </li>
         <% end %>
       </div>
     </ul>
