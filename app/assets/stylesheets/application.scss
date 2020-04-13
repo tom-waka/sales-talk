@@ -158,8 +158,6 @@ $category-color4: rgba(191, 81, 255, 0.6);
 }
 
 @mixin search_option{
-  -moz-appearance: button;
-  -webkit-appearance: button;
   appearance: button;
   border-style: solid;
   border-color: $main-color3;
