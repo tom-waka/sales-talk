@@ -39,16 +39,24 @@
       </div>
     </div>
 
-    <%= f.label :name, "ユーザー名" %>
+    <%= f.label :name do %>
+      <i class="fas fa-user"></i>ユーザー名
+    <% end %>
     <%= f.text_field :name, placeholder: 'ユーザー名を入力' %>
 
-    <%= f.label :email, "メールアドレス" %>
+    <%= f.label :email do %>
+      <i class="fas fa-envelope"></i>メールアドレス
+    <% end %>
     <%= f.text_field :email, placeholder: 'メールアドレスを入力' %>
 
-    <%= f.label :password, "パスワード(6文字以上)" %>
+    <%= f.label :password do %>
+      <i class="fas fa-key"></i>パスワード(6文字以上)
+    <% end %>
     <%= f.password_field :password, placeholder: '変更後のパスワードを入力' %>
 
-    <%= f.label :password_confirmation, "パスワードの再入力" %>
+    <%= f.label :password_confirmation do %>
+      <i class="fas fa-key"></i>パスワードの再入力
+    <% end %>
     <%= f.password_field :password_confirmation, placeholder: '変更後のパスワードを再入力' %>
 
     <%= f.submit "更新する", class: "btn" %>

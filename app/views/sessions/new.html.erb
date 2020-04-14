@@ -13,10 +13,14 @@
   <div class="form_area">
     <div class="section-title">ログイン</div> 
     <%= form_with scope: :session, url: login_path, local: true do |f| %>
-      <%= f.label :email, "メールアドレス" %>
+      <%= f.label :email do %>
+        <i class="fas fa-envelope"></i>メールアドレス
+      <% end %>
       <%= f.text_field :email, placeholder: 'メールアドレスを入力' %>
 
-      <%= f.label :password, "パスワード" %>
+      <%= f.label :password do %>
+        <i class="fas fa-key"></i>パスワード
+      <% end %>
       <%= f.password_field :password, placeholder: 'パスワードを入力' %>
     
       <%= f.submit "ログインする", class: "btn" %>
