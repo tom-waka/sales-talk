@@ -52,7 +52,7 @@ a{
   display: inline-block;
   border-style: solid ;
   border-color: $main-color3;
-  border-radius: 0.3rem;
+  border-radius: 0 0 0.3rem 0.3rem;
   border-width: 0.15rem;
   padding: 0.5rem 0;
   padding-left: 0.1rem;
@@ -66,6 +66,7 @@ a{
 @mixin users_form{
   @include basic_form;
   text-align: center;
+  margin-bottom: 1rem;
 }
 
 @mixin basic_icon{
@@ -669,12 +670,13 @@ $category-color4: rgba(191, 81, 255, 0.6);
   label{
     color: $main-color2;
     font-weight: bold;
-    background-color: $main-color3;
+    background-color: rgba(251, 145, 27, 0.77);
     border-radius: 0.3rem 0.3rem 0 0;
     margin-top: 1.5rem;
-    padding: 0.3rem 0.5rem;
+    padding: 0 0.5rem;
     margin-bottom: unset;
-    cursor        : pointer;
+    width: 100%;
+    cursor: pointer;
   }
 
   #user_name, #user_email, #user_password , #user_password_confirmation{
@@ -682,15 +684,17 @@ $category-color4: rgba(191, 81, 255, 0.6);
   }
   .choose_icon_btn{
     @include btn_option;
+    width: fit-content;
   }
   #user_remove_picture{
     cursor: pointer;
   }
   .remove_checkbox{
-    justify-content: center;
+    display: inline-flex;
+    align-items: center;
     label{
       padding-left: unset;
-      margin: 1rem 0 0;
+      margin: unset;
       background-color: unset;
       color: black;
     }
@@ -723,6 +727,7 @@ $category-color4: rgba(191, 81, 255, 0.6);
   .category_btns{
     @include basic_form;
     .category_btn{
+      width: fit-content;
       margin: unset;
       background-color: unset;
       color: black;

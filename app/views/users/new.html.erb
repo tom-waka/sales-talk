@@ -15,16 +15,24 @@
     <%= form_with model: @user, local: true do |f| %>
       <p><%= render partial: 'shared/error_messages', locals: { object: f.object } %></p>
 
-      <%= f.label :name, "ユーザー名" %>
+      <%= f.label :name do %>
+        <i class="fas fa-user"></i>ユーザー名
+      <% end %>
       <%= f.text_field :name, placeholder: 'ユーザー名を入力(30文字以内)' %>
 
-      <%= f.label :email, "メールアドレス" %>
+      <%= f.label :email do %>
+        <i class="fas fa-envelope"></i>メールアドレス
+      <% end %>
       <%= f.text_field :email, placeholder: '例: test@sample.com' %>
 
-      <%= f.label :password, "パスワード" %>
+      <%= f.label :password do %>
+        <i class="fas fa-key"></i>パスワード
+      <% end %>
       <%= f.password_field :password, placeholder: 'パスワードを入力(6文字以上)' %>
 
-      <%= f.label :password_confirmation, "パスワードの再入力" %>
+      <%= f.label :password_confirmation do %>
+        <i class="fas fa-key"></i>パスワードを再入力
+      <% end %>
       <%= f.password_field :password_confirmation, placeholder: 'もう一度パスワードを入力' %>
 
       <%= f.submit "登録する", class: "btn" %>
