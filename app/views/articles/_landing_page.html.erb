@@ -4,17 +4,21 @@
       <div class="catch_copy"> これ、<br>おすすめ<br>です。</div>
     </div>
     <%= image_tag('mascot.png', alt:'マスコットキャラクター', class: "mascot") %>
-    <div class="tmp">
-      <p class="introduce">SALES TALKは、自分の好きなモノを皆に紹介するwebサービスです。</p>
-      <p class="introduce">本や映画、音楽など何でもありです。</p>
-      <p class="introduce">営業担当となって、思う存分に売り込んでください！</p>
-
-      <%= link_to signup_path, class: "btn introduce_btn"  do  %>
-        <i class="fas fa-user-plus"></i>新規登録
-      <% end %>
-      <%= link_to login_path, class: "btn introduce_btn"  do  %>
-        <i class="fas fa-sign-in-alt"></i>ログイン
-      <% end %>
-    </div>
   </div>
 </div>
+
+<div class=introduce_area>
+  <div class="about_me">
+    <p class="introduce">SALES TALKは、自分の好きなモノを皆に紹介するwebサービスです。</p>
+    <p class="introduce">本や映画、音楽など何でもありです。</p>
+    <p class="introduce">営業担当となって、思う存分に売り込んでください！</p>
+
+    <%= link_to signup_path, class: "btn introduce_btn"  do  %>
+      <i class="fas fa-user-plus"></i>新規登録
+    <% end %>
+    <%= link_to login_path, class: "btn introduce_btn"  do  %>
+      <i class="fas fa-sign-in-alt"></i>ログイン
+    <% end %>
+  </div>
+</div>
+

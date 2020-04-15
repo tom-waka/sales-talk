@@ -328,10 +328,11 @@ $category-color4: rgba(191, 81, 255, 0.6);
     margin-bottom: 1rem;
     filter: $drop-shadow;
   }
-  .tmp{
+  .about_me{
+    text-align: center;
     background-color: $main-color4;
     border-color: $main-color3;
-    padding: 2rem 0;
+    padding: 2rem 0.5rem;
     margin-bottom: 2rem;
     .introduce{
       margin-bottom: 0.5rem;
