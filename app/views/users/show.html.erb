@@ -7,18 +7,9 @@
     <% else %>
       <%= image_tag 'default_icon.png', class: "user-icon" %>
     <% end %>
-    <div class="user-name"><%= @user.name %></div>
 
-    <div class="score">
-      <div class="score_section">
-        <div class="score_title">営業件数(記事数)</div> 
-        <div class="total"><span><%= @user_articles.size %></span>件</div>
-      </div>
-      <div class="score_section">
-        <div class="score_title">獲得いいね数</div> 
-        <div class="total"><span><%= total_likes(@user_articles) %></span>件</div>
-      </div>
-    </div>
+    <div class="user-name"><%= @user.name %></div>
+    <%= render 'stats' %>
   </div>
   <%= render 'edit_btn' %>
 </div>
