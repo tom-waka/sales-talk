@@ -4,6 +4,8 @@
 
   <div class="section-title"><%= "#{@user.name.truncate(10)}｜#{@title}" %></div> 
 
+  <%= "該当のユーザーはいません" unless @users.present? %>
+
   <% @users.each do |user| %>
     <div class="user_box">
       <div class="user">
