@@ -1,0 +1,21 @@
+<% provide(:title, @title) %>
+
+<div class="my_container">
+
+  <div class="section-title"><%= "#{@user.name.truncate(10)}｜#{@title}" %></div> 
+
+  <% @users.each do |user| %>
+    <div class="user_box">
+      <div class="user">
+        <% if user.picture? %>
+          <%= link_to image_tag(user.picture.url, class: "user-icon"), user %>
+        <% else %>
+          <%= link_to image_tag('default_icon.png', class: "user-icon"), user %>
+        <% end %>
+          <%= link_to "#{user.name.truncate(10)}", user, {class: "user-name"} %>
+      </div>
+    </div> 
+    <%= paginate @users, window: 2, left: 1, right: 1 %>
+  <% end %>
+
+</div>

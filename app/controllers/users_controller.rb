@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :logged_in_user, only:[:edit, :update, :destroy]
+  before_action :logged_in_user, only:[:edit, :update, :destroy, :following, :followers]
   before_action :correct_user,   only:[:edit, :update, :destroy]
   before_action :admin_check,    only:[:index]
   before_action :test_user_check,only:[:edit, :update, :destroy]
@@ -55,6 +55,20 @@ class UsersController < ApplicationController
     else
       redirect_to user, notice: "ユーザー情報の削除に失敗しました"
     end
+  end
+
+  def following
+    @title = "フォロー中"
+    @user  = User.find(params[:id])
+    @users = @user.following.page(params[:page]).per(20)
+    render 'show_follow'
+  end
+
+  def followers
+    @title = "フォロワー"
+    @user  = User.find(params[:id])
+    @users = @user.followers.page(params[:page]).per(20)
+    render 'show_follow'
   end
 
   private
