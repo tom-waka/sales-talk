@@ -11,6 +11,7 @@ module SalesTalk
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.2
     config.time_zone = 'Asia/Tokyo'
+    config.action_view.embed_authenticity_token_in_remote_forms = true
 
     config.generators do |g|
       g.test_framework :rspec,
