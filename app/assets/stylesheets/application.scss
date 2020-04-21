@@ -622,6 +622,26 @@ $category-color4: rgba(191, 81, 255, 0.6);
     border-style: solid;
     border-width: 0.1rem;
     border-color: rgba(119, 119, 119, 0.22);
+    .btn_follow{
+      margin-top: unset;
+      &:hover{
+      box-shadow    : none;
+      background    : rgba(255, 164, 60, 0.952);
+      border-color  : rgba(255, 164, 60, 0.952);
+      color         : $main-color2;
+      }
+    }
+    .btn_unfollow{
+      margin-top: unset;
+      background-color: rgba(128, 128, 128, 0.808);
+      border-color    : rgba(128, 128, 128, 0.808);
+      &:hover{
+      box-shadow    : none;
+      background    : gray;
+      border-color  : gray;
+      color         : $main-color2;
+     }
+    }
     .user-icon{
       @include basic_icon;
       width: 10rem;
@@ -633,9 +653,10 @@ $category-color4: rgba(191, 81, 255, 0.6);
       font-size: 1.2rem;
     }
     .score{
-      display: flex;
-      margin-top: 2rem;
-      justify-content: space-around;
+      display: grid;
+      gap: 2rem;
+      grid-template-columns: repeat(2,1fr);
+      margin: 1rem 0.5rem 0;
       .score_section{
         justify-content: center;
         align-items: center;
@@ -816,6 +837,13 @@ $category-color4: rgba(191, 81, 255, 0.6);
     height: 3rem;
   }
 }
+.no_following{
+  margin-top: 1rem;
+}
+.link_to_back_follow{
+  margin: 1rem 0;
+  text-align: center;
+}
 
 /*  ----------------------------------  レスポンシブ(650px)  -------------------------------------------------*/
 @media (max-width: 765px){
@@ -921,6 +949,10 @@ $category-color4: rgba(191, 81, 255, 0.6);
   .page-link {
     padding: 0.5rem;
   }  
+
+  .following-title{
+    font-size: 1.1rem;
+  }
 }
 
 /*  ----------------------------------  レスポンシブ(350px)  -------------------------------------------------*/

@@ -2,9 +2,10 @@
 
 <div class="my_container">
 
-  <div class="section-title"><%= "#{@user.name.truncate(10)}｜#{@title}" %></div> 
+  <div class="link_to_back_follow"><%= link_to "戻る", session[:forwarding_url] || root_url %></div>
+  <div class="section-title following-title"><%= "#{@user.name.truncate(10)}｜#{@title}" %></div> 
 
-  <%= "該当のユーザーはいません" unless @users.present? %>
+  <div class="no_following"><%= "該当のユーザーはいません" unless @users.present? %></div>
 
   <% @users.each do |user| %>
     <div class="user_box">

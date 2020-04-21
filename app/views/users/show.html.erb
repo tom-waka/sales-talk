@@ -1,8 +1,8 @@
 <% provide(:title, @user.name) %>
 
 <div class="my_container">
-  <%= render 'follow_form' if logged_in? %>
   <div class="user_info">
+    <%= render 'follow_form' if logged_in? %>
     <% if @user.picture? %>
       <%= image_tag @user.picture.url, class: "user-icon" %>
     <% else %>
