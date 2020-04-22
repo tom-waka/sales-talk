@@ -18,7 +18,3 @@
 <div class="section-title">営業履歴</div> 
 <%= render partial: 'shared/articles_grid', locals: { object: @user_articles_pages } %>
 <%= paginate @user_articles_pages, window: 2, left: 1, right: 1 %>
-
-<div class="my_container">
-  <%= render 'delete_btn' %>
-</div>

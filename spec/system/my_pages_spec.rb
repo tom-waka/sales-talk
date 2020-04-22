@@ -76,7 +76,7 @@ RSpec.describe "MyPages", type: :system do
       context '退会しようとした時' do
         it '退会成功' do
           login_as(user_1)
-          visit user_path(user_1)
+          visit edit_user_path(user_1)
           click_link '退会する'
           page.driver.browser.switch_to.alert.accept
           expect(current_path).to eq(root_path)
@@ -97,7 +97,7 @@ RSpec.describe "MyPages", type: :system do
       context 'adminでログインした時' do
         it '削除成功' do
           login_as(admin_user)
-          visit user_path(user_1)
+          visit edit_user_path(user_1)
           click_link 'ユーザーを削除する'
           page.driver.browser.switch_to.alert.accept
           expect(current_path).to eq(users_path)
