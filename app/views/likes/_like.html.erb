@@ -1,4 +1,4 @@
-<div class="likes_count" ontouchstart="">
+<div class="likes_count">
   <% if logged_in?  %>
     <% if article.liked_by?(current_user) %>
       <%= link_to article_likes_path(article.id), class: "like_btn", method: :delete, remote: true do %>
