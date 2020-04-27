@@ -37,7 +37,7 @@ a{
 
 @mixin basic_container{
   max-width: 615px;
-  margin: 0.5rem auto;
+  margin: 2rem auto 0.5rem;
   text-align: center;
 }
 
@@ -175,7 +175,7 @@ $category-color4: rgba(191, 81, 255, 0.6);
   font-family: $Noto-font;
   font-size: 1.5rem;
   text-align: center;
-  margin: 0 auto;
+  margin: 2rem auto 0;
   padding: 0.5rem 1rem;
   width: fit-content;
   border-bottom: solid;
@@ -192,11 +192,8 @@ $category-color4: rgba(191, 81, 255, 0.6);
   max-width: 450px;
 }
 
-.notification{
-  margin-top: 2.0rem;
-  text-align: center;
-  font-weight: bold;
-  color: rgb(0, 47, 255);
+.alert {
+	text-align: center;
 }
 
 ::placeholder{
@@ -214,7 +211,7 @@ $category-color4: rgba(191, 81, 255, 0.6);
 .page-header{
   background-color: $main-color1;
   width: 100%;
-  margin-bottom: 2rem;
+
   .header-menu{
     display: flex;
     align-items: center;
