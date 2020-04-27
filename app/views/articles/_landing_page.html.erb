@@ -13,12 +13,22 @@
     <p class="introduce">本や映画、音楽など何でもありです。</p>
     <p class="introduce">営業担当となって、思う存分に売り込んでください！</p>
 
-    <%= link_to signup_path, class: "btn introduce_btn"  do  %>
-      <i class="fas fa-user-plus"></i>新規登録
-    <% end %>
-    <%= link_to login_path, class: "btn introduce_btn"  do  %>
-      <i class="fas fa-sign-in-alt"></i>ログイン
-    <% end %>
+    <section class="login_area">
+      <div class="test_login">
+        <%= form_with scope: :session, url: login_path, local: true do |f| %>
+          <%= f.hidden_field :email, value: 'test_user@sample.com' %>
+          <%= f.hidden_field :password, value: 'test_user_foobar' %>
+          <%= f.submit 'テストユーザーとしてログイン', class: "test_login_btn",
+                                        data: {confirm: "テストユーザーは\n「アイコン/登録情報の変更」「記事の削除」「退会」\nができません。"} %>
+        <% end %>
+      </div>      
+      <%= link_to signup_path, class: "btn introduce_btn"  do  %>
+        <i class="fas fa-user-plus"></i>新規登録
+      <% end %>
+      <%= link_to login_path, class: "btn introduce_btn"  do  %>
+        <i class="fas fa-sign-in-alt"></i>ログイン
+      <% end %>
+    </section>
   </div>
 </div>
 
