@@ -11,11 +11,11 @@
 
   <div class="score_section">
     <div class="score_title">フォロー</div> 
-    <div class="total"><span><%= link_to "#{@user.following.count}", following_user_path(@user), id: "following" %></span>人</div>
+    <div class="total"><span><%= link_to "#{@user.following.size}", following_user_path(@user), id: "following" %></span>人</div>
   </div>
 
   <div class="score_section">
     <div class="score_title">フォロワー</div> 
-    <div class="total"><span><%= link_to "#{@user.followers.count}", followers_user_path(@user), id: "followers" %></span>人</div>
+    <div class="total"><span><%= link_to "#{@user.followers.size}", followers_user_path(@user), id: "followers" %></span>人</div>
   </div>
 </div>
