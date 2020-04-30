@@ -1,7 +1,7 @@
 class ArticlesController < ApplicationController
-  before_action :logged_in_user, only:[:new, :create, :edit, :update, :destroy]
+  before_action :logged_in_user, only:[:new, :create, :edit, :update, :destroy, :feed]
   before_action :correct_article,only:[:edit, :update, :destroy]
-  before_action :store_location, only:[:index]
+  before_action :store_location, only:[:index, :feed]
   before_action :can_not_delete, only:[:destroy]
 
   def index
@@ -47,6 +47,10 @@ class ArticlesController < ApplicationController
     article.destroy
     redirect_to session[:forwarding_url] || root_url, notice: "記事を削除しました"
     session.delete(:forwarding_url)
+  end
+
+  def feed
+    @articles = current_user.feed.includes([:user],[:category]).page(params[:page]).per(6)
   end
 
   private
