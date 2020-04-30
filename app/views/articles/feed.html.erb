@@ -1,0 +1,11 @@
+<% provide(:title, "タイムライン") %>
+
+<div class="section-title">タイムライン</div> 
+
+<div id="feed">
+  <%= render partial: 'shared/articles_grid', locals: { object: @articles } %>
+</div>
+
+<div id="paginate">
+  <%= paginate @articles, window: 2, left: 1, right: 1 %>
+</div>
