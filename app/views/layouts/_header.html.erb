@@ -3,6 +3,7 @@
     <%= link_to image_tag('logo.png', alt:'logo', class: "logo") , '/' %>
     <ul class="main-nav">
       <div class="nav-menu">
+
         <% if logged_in? %>
           <li>
             <% if current_user.picture? %>
@@ -17,6 +18,11 @@
             <% end %>
           </li>
           <li>
+            <%= link_to feed_path, class: "nav-item"  do  %>
+              <i class="fab fa-twitch"></i>タイムライン
+            <% end %>
+          </li>
+          <li>
             <%= link_to logout_path , method: :delete , data: {confirm: "ログアウトしますか？"}, class: "nav-item" do %>
               <i class="fas fa-sign-out-alt"></i>ログアウト
             <% end %>
@@ -24,6 +30,7 @@
           <% if current_user.admin? %>
             <li><%= link_to "ユーザー一覧"  , users_path , class: "nav-item" %></li>
           <% end %>
+
         <% else %>
           <li>
             <%= link_to signup_path, class: "nav-item"  do  %>
@@ -36,6 +43,7 @@
             <% end %>
           </li>
         <% end %>
+
       </div>
     </ul>
   </div>
