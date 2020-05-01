@@ -40,6 +40,7 @@ RSpec.describe "UsersSessions", type: :system do
         find("[data-testid='flash_message']")        
       end
       it 'ログアウト成功' do
+        visit user_path(user)
         click_link('ログアウト')
         page.driver.browser.switch_to.alert.accept
         expect(current_path).to eq(root_path)
