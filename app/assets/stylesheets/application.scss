@@ -114,7 +114,7 @@ a{
   @include basic_btn;
   background-color:rgba(255, 0, 0, 0.849);
   border-color: rgba(255, 0, 0, 0.849);
-  margin-top: 5rem;
+  
   &:hover{
     color: rgba(255, 0, 0, 0.849);
     border-color: rgba(255, 0, 0, 0.849);
@@ -216,7 +216,7 @@ $category-color4: rgba(191, 81, 255, 0.6);
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 2rem;
+    padding: 0 1rem;
     .logo{
       height: 3.5rem;
       width: 16rem;
@@ -676,6 +676,13 @@ $category-color4: rgba(191, 81, 255, 0.6);
         }
       }
     }
+  }
+
+  .edit_logout{
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+    margin: auto;
   }
   
   .grid{

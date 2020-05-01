@@ -1,0 +1,15 @@
+<div class="edit_logout">
+  <% if logged_in? %>
+
+    <% if (current_user?(@user) || current_user.admin?) && !current_user.test_user? %>
+      <%= link_to "登録情報を編集する", edit_user_path(@user), class: "btn" %>
+    <% end %>
+
+    <% if current_user?(@user) %>
+      <%= link_to logout_path , method: :delete , data: {confirm: "ログアウトしますか？"}, class: "btn-danger" do %>
+        <i class="fas fa-sign-out-alt"></i>ログアウト
+      <% end %>
+    <% end %>
+
+  <% end %>
+</div>
