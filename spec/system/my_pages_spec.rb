@@ -70,6 +70,19 @@ RSpec.describe "MyPages", type: :system do
         end
       end
 
+      context 'ログインアウト時' do
+        it '編集リンクの表示なし' do
+          visit user_path(user_1)
+          expect(current_path).to eq(user_path(user_1))
+          expect(page).to have_no_link '登録情報を編集する'
+        end
+
+        it '編集ページへアクセス不可' do
+          visit edit_user_path(user_1)
+          find("[data-testid='flash_message']")
+          expect(current_path).to eq(login_path)
+        end
+      end
     end
 
     describe 'ユーザーの削除' do
