@@ -235,17 +235,16 @@ $category-color4: rgba(191, 81, 255, 0.6);
         align-items: center;
         li{
           list-style: none;
-          margin: 0.5rem;
+          margin: 0.3rem;
           border-radius: 1.0rem;
           .nav-item{
             font-family: $Kosugi-font;
             font-size: 0.9rem;
             color: $main-color2;
             text-decoration: none;
-            padding: 0.5rem;
+            padding: 0.2rem;
             margin: unset;
-            border-style: solid;
-            border-radius: 1.0rem;
+            border-bottom: solid;
             transition    : 0.3s;
             &:hover {
               color: $main-color1;
@@ -882,7 +881,7 @@ $category-color4: rgba(191, 81, 255, 0.6);
         margin-bottom: 0.3rem;
         .nav-menu{
           li{
-            margin: 0 0.3rem 0.5rem;
+            margin: 0 0.3rem 0.3rem;
             border-radius: 1.0rem;
             .user-icon{
               @include basic_icon;
@@ -890,10 +889,6 @@ $category-color4: rgba(191, 81, 255, 0.6);
               border-width: 0.15rem;
               width: 2.5rem;
               height: 2.5rem;
-              margin-right: 1.0rem;
-            }
-            .nav-item{
-              margin-right: 0.7rem;
             }
           }
         }
@@ -982,9 +977,9 @@ $category-color4: rgba(191, 81, 255, 0.6);
         margin-bottom: 0.1rem;
         .nav-menu{
           li{
+            margin: 0 0.3rem 0.3rem;
             .nav-item{
               font-size: 0.8rem;
-              padding: 0.3rem;
             }
             .user-icon{
               @include basic_icon;

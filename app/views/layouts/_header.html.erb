@@ -6,21 +6,25 @@
 
         <% if logged_in? %>
           <li>
-            <% if current_user.picture? %>
-              <%= link_to image_tag(current_user.picture.url, class: "user-icon"), current_user %>
-            <% else %>
-              <%= link_to image_tag('default_icon.png', class: "user-icon"), current_user %>
+            <%= link_to root_path, class: "nav-item"  do  %>
+              <i class="fas fa-home"></i>ホーム
+            <% end %>
+          </li>
+          <li>
+            <%= link_to feed_path, class: "nav-item"  do  %>
+              <i class="far fa-clock"></i>タイムライン
             <% end %>
           </li>
           <li>
             <%= link_to new_article_path, class: "nav-item"  do  %>
-               <i class="fas fa-pencil-alt"></i>投稿
+              <i class="fas fa-pencil-alt"></i>投稿
             <% end %>
           </li>
-
           <li>
-            <%= link_to feed_path, class: "nav-item"  do  %>
-              <i class="far fa-clock"></i>タイムライン
+            <% if current_user.picture? %>
+              <%= link_to image_tag(current_user.picture.url, class: "user-icon"), current_user %>
+            <% else %>
+              <%= link_to image_tag('default_icon.png', class: "user-icon"), current_user %>
             <% end %>
           </li>
           <% if current_user.admin? %>
