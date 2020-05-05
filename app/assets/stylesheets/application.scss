@@ -235,7 +235,7 @@ $category-color4: rgba(191, 81, 255, 0.6);
         align-items: center;
         li{
           list-style: none;
-          margin: 0.3rem;
+          margin: 0.3rem 0.5rem;
           border-radius: 1.0rem;
           .nav-item{
             font-family: $Kosugi-font;
@@ -245,6 +245,7 @@ $category-color4: rgba(191, 81, 255, 0.6);
             padding: 0.2rem;
             margin: unset;
             border-bottom: solid;
+            border-width: 0.1rem;
             transition    : 0.3s;
             &:hover {
               color: $main-color1;
@@ -874,14 +875,14 @@ $category-color4: rgba(191, 81, 255, 0.6);
       display: flex;
       flex-direction: column;
       .logo{
-        margin-bottom: 0.5rem;
+        margin-bottom: 0.3rem;
       }
       .main-nav{
         margin: unset;
         margin-bottom: 0.3rem;
         .nav-menu{
           li{
-            margin: 0 0.3rem 0.3rem;
+            margin: 0 0.4rem 0.5rem;
             border-radius: 1.0rem;
             .user-icon{
               @include basic_icon;
@@ -977,7 +978,7 @@ $category-color4: rgba(191, 81, 255, 0.6);
         margin-bottom: 0.1rem;
         .nav-menu{
           li{
-            margin: 0 0.3rem 0.3rem;
+            margin: 0 0.35rem 0.5rem;
             .nav-item{
               font-size: 0.8rem;
             }
