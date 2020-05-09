@@ -1,5 +1,5 @@
 # SALES TALK
-![Alt text](https://sales-talk-picture.s3-ap-northeast-1.amazonaws.com/+thumbnail/README.png)
+<img src="https://sales-talk-picture.s3-ap-northeast-1.amazonaws.com/+thumbnail/README.png" width=90%> 
 
 https://www.sales-talk.net/  
 自分の好きなモノ（映画や本など）を皆へ紹介する、記事投稿サイトです。  
@@ -25,14 +25,17 @@ https://www.sales-talk.net/
 * 「紹介する事(セールストーク)」が好きな方
 
 # 主な機能の紹介
-### 記事投稿関連
-* 記事の投稿/表示/編集/削除  
-  →記事内に貼られたURLはリンク化  
-<img src="https://sales-talk-picture.s3-ap-northeast-1.amazonaws.com/+thumbnail/article.png" width=80%> 
+### 記事関連
+* 記事の投稿/表示/編集/削除
 * いいね機能(Ajax)
+* 記事内に貼られたURLはリンク化  
+<img src="https://sales-talk-picture.s3-ap-northeast-1.amazonaws.com/+thumbnail/article.png" width=60%>  
+
+
 * 記事の検索機能(Ajax)  
   →「キーワード」「カテゴリー」「最新順orいいね順」の３つを組み合わせて検索可能  
-<img src="https://sales-talk-picture.s3-ap-northeast-1.amazonaws.com/+thumbnail/search.png" width=80%>   
+<img src="https://sales-talk-picture.s3-ap-northeast-1.amazonaws.com/+thumbnail/search.png" width=60%>  
+
 * タイムライン機能  
   →フォロー中のユーザーの記事のみ表示
 
@@ -40,17 +43,19 @@ https://www.sales-talk.net/
 * ユーザーの登録/表示/編集/削除
 * ログイン/ログアウト機能
 * フォロー/アンフォロー機能(Ajax)  
-<img src="https://sales-talk-picture.s3-ap-northeast-1.amazonaws.com/+thumbnail/follow.png" width=60%>
+<img src="https://sales-talk-picture.s3-ap-northeast-1.amazonaws.com/+thumbnail/follow.png" width=45%>  
+
 * ユーザーの画像アイコン設定機能  
   →画像の削除可能  
-<img src="https://sales-talk-picture.s3-ap-northeast-1.amazonaws.com/+thumbnail/user_picture.png" width=60%> 
+<img src="https://sales-talk-picture.s3-ap-northeast-1.amazonaws.com/+thumbnail/user_picture.png" width=45%>  
+
 * テストログイン機能（機能制限つき）  
   →ユーザー登録情報の編集/削除、記事の削除を制限
 * adminユーザー機能  
   →全ユーザーの登録情報、記事を編集/削除可能  
   →admin自身のユーザー削除は不可  
   →adminのみ登録ユーザー一覧の表示が可能  
-<img src="https://sales-talk-picture.s3-ap-northeast-1.amazonaws.com/+thumbnail/following_user.png" width=50%>   
+<img src="https://sales-talk-picture.s3-ap-northeast-1.amazonaws.com/+thumbnail/following_user.png" width=40%>   
 
 ### その他
 * ページネーション機能
@@ -68,5 +73,5 @@ https://www.sales-talk.net/
 * PostgreSQL 12.1
 * AWS（S3のみ）
 ## ER図
-![Alt text](https://sales-talk-picture.s3-ap-northeast-1.amazonaws.com/+thumbnail/ER.png)
+<img src="https://sales-talk-picture.s3-ap-northeast-1.amazonaws.com/+thumbnail/ER.png" width=90%>  
 
