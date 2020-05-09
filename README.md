@@ -25,24 +25,32 @@ https://www.sales-talk.net/
 * 「紹介する事(セールストーク)」が好きな方
 
 # 主な機能の紹介
+### 記事投稿関連
+* 記事の投稿/表示/編集/削除  
+  →記事内に貼られたURLはリンク化  
+<img src="https://sales-talk-picture.s3-ap-northeast-1.amazonaws.com/+thumbnail/article.png" width=80%> 
+* いいね機能(Ajax)
+* 記事の検索機能(Ajax)  
+  →「キーワード」「カテゴリー」「最新順orいいね順」の３つを組み合わせて検索可能  
+<img src="https://sales-talk-picture.s3-ap-northeast-1.amazonaws.com/+thumbnail/search.png" width=80%>   
+* タイムライン機能  
+  →フォロー中のユーザーの記事のみ表示
+
 ### ユーザー関連
 * ユーザーの登録/表示/編集/削除
 * ログイン/ログアウト機能
+* フォロー/アンフォロー機能(Ajax)  
+<img src="https://sales-talk-picture.s3-ap-northeast-1.amazonaws.com/+thumbnail/follow.png" width=60%>
 * ユーザーの画像アイコン設定機能  
-  →画像の削除可能
-* フォロー/アンフォロー機能(Ajax)
+  →画像の削除可能  
+<img src="https://sales-talk-picture.s3-ap-northeast-1.amazonaws.com/+thumbnail/user_picture.png" width=60%> 
 * テストログイン機能（機能制限つき）  
   →ユーザー登録情報の編集/削除、記事の削除を制限
 * adminユーザー機能  
   →全ユーザーの登録情報、記事を編集/削除可能  
   →admin自身のユーザー削除は不可  
-  →adminのみ登録ユーザー一覧の表示が可能
-
-### 記事投稿関連
-* 記事の投稿/表示/編集/削除
-* いいね機能(Ajax)
-* 記事の検索機能(Ajax)  
-  →「キーワード」「カテゴリー」「最新順orいいね順」の３つを組み合わせて検索可能  
+  →adminのみ登録ユーザー一覧の表示が可能  
+<img src="https://sales-talk-picture.s3-ap-northeast-1.amazonaws.com/+thumbnail/following_user.png" width=50%>   
 
 ### その他
 * ページネーション機能
@@ -50,6 +58,7 @@ https://www.sales-talk.net/
 
 # 意識したこと
 * 操作が分かりやすい画面設計
+* gem「bullet」を使用し、N+1問題を発見・解消
 * プルリクエストを利用しての擬似的なチーム開発
 * RSpecにてテストコード記述
 
