@@ -4,6 +4,8 @@ RSpec.describe 'Follow', type: :system do
   describe 'フォロー機能のテスト' do
     let (:user_1) {create(:user)}
     let (:user_2) {create(:user)}
+    let! (:article_1) {create(:article, title: 'ユーザー1の記事', user: user_1)}
+    let! (:article_2) {create(:article, title: 'ユーザー2の記事', user: user_2)}
 
     context 'ログイン時の挙動' do
       before do
@@ -46,6 +48,21 @@ RSpec.describe 'Follow', type: :system do
           end          
         end
       end
+
+      context 'タイムライン機能' do
+        it 'フォロー中のユーザーの記事が表示される' do
+          visit feed_path
+          expect(page).to have_link 'ユーザー1の記事'
+          expect(page).to have_link 'ユーザー2の記事'
+        end
+
+        it 'フォロー無しの場合は、自分の記事だけが表示' do
+          login_as(user_2)
+          visit feed_path
+          expect(page).to have_no_link 'ユーザー1の記事'
+          expect(page).to have_link 'ユーザー2の記事'
+        end
+      end
     end
 
     context 'ログアウト時の挙動' do
@@ -57,6 +74,11 @@ RSpec.describe 'Follow', type: :system do
       it '「フォロー中ボタン」が非表示' do
         visit user_path(user_1)
         have_no_button 'フォロー中'
+      end
+
+      it 'タイムラインにアクセスすると、ログインページへ' do
+        visit feed_path
+        expect(current_path).to eq(login_path)
       end
     end
   end
