@@ -1,8 +1,8 @@
 class ArticlesController < ApplicationController
-  before_action :logged_in_user, only:[:new, :create, :edit, :update, :destroy, :feed]
-  before_action :correct_article,only:[:edit, :update, :destroy]
-  before_action :store_location, only:[:index, :feed]
-  before_action :can_not_delete, only:[:destroy]
+  before_action :logged_in_user,  only: [:new, :create, :edit, :update, :destroy, :feed]
+  before_action :correct_article, only: [:edit, :update, :destroy]
+  before_action :store_location,  only: [:index, :feed]
+  before_action :can_not_delete,  only: [:destroy]
 
   def index
     @categories = Category.all
