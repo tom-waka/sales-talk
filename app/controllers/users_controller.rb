@@ -1,9 +1,9 @@
 class UsersController < ApplicationController
-  before_action :logged_in_user, only:[:edit, :update, :destroy, :following, :followers]
-  before_action :correct_user,   only:[:edit, :update, :destroy]
-  before_action :admin_check,    only:[:index]
-  before_action :test_user_check,only:[:edit, :update, :destroy]
-  before_action :store_location, only:[:show]
+  before_action :logged_in_user,  only: [:edit, :update, :destroy, :following, :followers]
+  before_action :correct_user,    only: [:edit, :update, :destroy]
+  before_action :admin_check,     only: [:index]
+  before_action :test_user_check, only: [:edit, :update, :destroy]
+  before_action :store_location,  only: [:show]
   
 
   def index
@@ -79,7 +79,9 @@ class UsersController < ApplicationController
 
     def correct_user
       @user = User.find(params[:id])
-      redirect_to root_url, notice: "このURLにはアクセスできません" unless current_user?(@user) || current_user.admin?
+      unless current_user?(@user) || current_user.admin?
+        redirect_to root_url, notice: "このURLにはアクセスできません" 
+      end
     end
 
     def admin_check
