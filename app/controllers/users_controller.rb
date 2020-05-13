@@ -4,7 +4,6 @@ class UsersController < ApplicationController
   before_action :admin_check,     only: [:index]
   before_action :test_user_check, only: [:edit, :update, :destroy]
   before_action :store_location,  only: [:show]
-  
 
   def index
     @users = User.order(:created_at).page(params[:page]).per(20)
@@ -15,7 +14,7 @@ class UsersController < ApplicationController
     @user_articles = @user.articles.includes([:category])
     @user_articles_pages = @user_articles.page(params[:page]).per(6)
   end
-  
+
   def new
     @user = User.new
   end
@@ -38,7 +37,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     if @user.update_attributes(user_params)
       redirect_to @user, notice: "ユーザー情報を更新しました"
-    else  
+    else
       render 'users/edit'
     end
   end
@@ -74,13 +73,14 @@ class UsersController < ApplicationController
   private
 
     def user_params
-      params.require(:user).permit(:name, :email, :password, :password_confirmation, :picture, :remove_picture)
+      params.require(:user).permit(:name, :email, :password, :password_confirmation,
+                                   :picture, :remove_picture)
     end
 
     def correct_user
       @user = User.find(params[:id])
       unless current_user?(@user) || current_user.admin?
-        redirect_to root_url, notice: "このURLにはアクセスできません" 
+        redirect_to root_url, notice: "このURLにはアクセスできません"
       end
     end
 
