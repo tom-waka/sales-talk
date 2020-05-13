@@ -6,7 +6,7 @@ class ArticlesController < ApplicationController
 
   def index
     @categories = Category.all
-    @q = Article.includes([:user],[:category]).ransack(params[:q])
+    @q = Article.includes([:user], [:category]).ransack(params[:q])
     @articles = @q.result(distinct: true).page(params[:page]).per(6)
   end
 
@@ -20,10 +20,10 @@ class ArticlesController < ApplicationController
 
   def create
     @article = current_user.articles.build(article_params)
-    
+
     if @article.save
       redirect_to @article, notice: "記事を投稿しました"
-    else 
+    else
       render 'articles/new'
     end
   end
@@ -50,7 +50,7 @@ class ArticlesController < ApplicationController
   end
 
   def feed
-    @articles = current_user.feed.includes([:user],[:category]).page(params[:page]).per(6)
+    @articles = current_user.feed.includes([:user], [:category]).page(params[:page]).per(6)
   end
 
   private
@@ -61,7 +61,9 @@ class ArticlesController < ApplicationController
 
     def correct_article
       article = Article.find(params[:id])
-      redirect_to root_url, notice: "このURLにはアクセスできません" unless is_mine?(article) || current_user.admin?
+      unless is_mine?(article) || current_user.admin?
+        redirect_to root_url, notice: "このURLにはアクセスできません"
+      end
     end
 
     def can_not_delete
@@ -70,5 +72,4 @@ class ArticlesController < ApplicationController
         redirect_to request.referer, notice: "テストユーザーの投稿は削除できません"
       end
     end
-
 end
