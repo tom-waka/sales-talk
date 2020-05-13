@@ -39,7 +39,7 @@ https://www.sales-talk.net/
 * タイムライン機能  
   →フォロー中のユーザーの記事のみ表示
 
-### ユーザー基本機能
+### ユーザーの基本機能
 * ユーザーの登録/表示/編集/削除
 * ログイン/ログアウト機能  
 * フォロー/アンフォロー機能(Ajax)  
@@ -55,7 +55,7 @@ https://www.sales-talk.net/
 * テストユーザー機能（機能制限つき）  
   →ユーザー登録をしなくても、簡単にポートフォリオをご覧いただけるように実装   
   →ユーザー情報の編集/削除、記事の削除を制限  
-  
+
 * adminユーザー機能  
   →全ユーザーの登録情報、記事を編集/削除可能  
   →admin自身のユーザー削除は不可  
@@ -77,10 +77,9 @@ https://www.sales-talk.net/
 * Ruby 2.6.5
 * Ruby on Rails 5.2.4.2
 * PostgreSQL 12.1
-* bootstrap  
+* Bootstrap4  
 * jQuery
 * AWS（S3のみ）
 
 ## ER図
 <img src="https://sales-talk-picture.s3-ap-northeast-1.amazonaws.com/+thumbnail/ER.png" width=90%>  
-
