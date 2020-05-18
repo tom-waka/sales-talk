@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :article do
-    title {"title"}
-    content {"content"}
+    title { "title" }
+    content { "content" }
     category
     user
   end

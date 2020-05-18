@@ -2,7 +2,6 @@ require 'rails_helper'
 
 RSpec.describe Article, type: :model do
   describe 'バリデーション' do
-
     context '記事が有効な場合' do
       it "投稿成功" do
         article = create(:article)
@@ -18,7 +17,7 @@ RSpec.describe Article, type: :model do
       end
 
       it "タイトルが50文字以上のため無効" do
-        article = build(:article, title: "a"*51)
+        article = build(:article, title: "a" * 51)
         expect(article.valid?).to eq(false)
         expect(article.errors[:title]).to include("は50文字以内で入力してください")
       end
@@ -29,7 +28,5 @@ RSpec.describe Article, type: :model do
         expect(article.errors[:category]).to include("を入力してください")
       end
     end
-
   end
-
 end

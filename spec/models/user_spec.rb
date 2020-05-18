@@ -1,16 +1,14 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  
   describe 'バリデーション' do
-
     context '登録情報が有効な場合' do
       it "登録成功" do
         user = build(:user)
         expect(user).to be_valid
       end
     end
-      
+
     context '登録情報が無効な場合' do
       it "名前が未入力のため無効" do
         user = build(:user, name: '')
@@ -19,7 +17,7 @@ RSpec.describe User, type: :model do
       end
 
       it "名前が31文字以上のため無効" do
-        user = build(:user, name: "a"*31)
+        user = build(:user, name: "a" * 31)
         expect(user.valid?).to eq(false)
         expect(user.errors[:name]).to include("は30文字以内で入力してください")
       end
@@ -50,7 +48,7 @@ RSpec.describe User, type: :model do
       end
 
       it "パスワードの再入力が合致しないため無効" do
-        user = build(:user, password_confirmation: "hogehoge" )
+        user = build(:user, password_confirmation: "hogehoge")
         expect(user.valid?).to eq(false)
         expect(user.errors[:password_confirmation]).to include("が再入力されたものと一致しません")
       end

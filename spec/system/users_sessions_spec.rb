@@ -3,8 +3,8 @@ require 'rails_helper'
 RSpec.describe "UsersSessions", type: :system do
 
   describe 'ログイン・ログアウト機能の確認' do
-    let (:user) {create(:user)}
-    let (:admin_user) {create(:user, name: 'アドミン', email: 'admin@sample.com', admin: 'true')}
+    let(:user) { create(:user) }
+    let(:admin_user) { create(:user, name: 'アドミン', email: 'admin@sample.com', admin: 'true') }
 
     describe 'ログイン前' do
       it 'ログイン成功' do

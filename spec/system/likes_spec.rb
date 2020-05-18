@@ -2,8 +2,9 @@ require 'rails_helper'
 
 RSpec.describe "Likes", type: :system do
   describe 'いいねのテスト' do
-    let (:user){create(:user)}
-    let (:article){create(:article)}
+    let(:user) { create(:user) }
+    let(:article) { create(:article) }
+
     context 'ログイン時' do
       it 'いいね成功' do
         login_as(user)

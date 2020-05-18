@@ -2,10 +2,10 @@ require 'rails_helper'
 
 RSpec.describe "MyPages", type: :system do
   describe 'マイページの挙動' do
-    let (:user_1) {create(:user)}
-    let (:user_2) {create(:user)}
-    let (:admin_user) {create(:user, name: 'アドミン', email: 'admin@sample.com', admin: 'true')}
-    let (:tester) {create(:user, name: 'テストユーザー', email: 'test@sample.com', test_user: 'true')}
+    let(:user_1) { create(:user) }
+    let(:user_2) { create(:user) }
+    let(:admin_user) { create(:user, name: 'アドミン', email: 'admin@sample.com', admin: 'true') }
+    let(:tester) { create(:user, name: 'テストユーザー', email: 'test@sample.com', test_user: 'true') }
     
     context 'マイページの表示' do
       it '表示成功' do
