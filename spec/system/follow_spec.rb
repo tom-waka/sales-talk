@@ -2,10 +2,10 @@ require 'rails_helper'
 
 RSpec.describe 'Follow', type: :system do
   describe 'フォロー機能のテスト' do
-    let (:user_1) {create(:user)}
-    let (:user_2) {create(:user)}
-    let! (:article_1) {create(:article, title: 'ユーザー1の記事', user: user_1)}
-    let! (:article_2) {create(:article, title: 'ユーザー2の記事', user: user_2)}
+    let(:user_1) { create(:user) }
+    let(:user_2) { create(:user) }
+    let!(:article_1) { create(:article, title: 'ユーザー1の記事', user: user_1) }
+    let!(:article_2) { create(:article, title: 'ユーザー2の記事', user: user_2) }
 
     context 'ログイン時の挙動' do
       before do

@@ -2,17 +2,17 @@ require 'rails_helper'
 
 RSpec.describe 'Articles', type: :system do
   describe '記事関連の検証' do
-    let (:user_1) {create(:user)}
-    let (:user_2) {create(:user)}
-    let (:admin_user) {create(:user, name: 'アドミン', email: 'admin@sample.com', admin: 'true')}
-    let (:tester) {create(:user, name: 'テストユーザー', email: 'test@sample.com', test_user: 'true')}
-    let (:article_1) {create(:article, title: 'タイトル1', user: user_1, category: category_1)}
-    let (:article_2) {create(:article, title: 'タイトル2', user: user_1, category: category_1)}
-    let (:article_3) {create(:article, title: 'タイトル3', user: user_1, category: category_2)}
-    let (:article_test) {create(:article, title: 'テストユーザーの投稿', user: tester)}
-    let! (:category_1) {create(:category)}
-    let! (:category_2) {create(:category, name: '映像')}
-    let! (:category_3) {create(:category, name: '音楽')}
+    let(:user_1) { create(:user) }
+    let(:user_2) { create(:user) }
+    let(:admin_user) { create(:user, name: 'アドミン', email: 'admin@sample.com', admin: 'true') }
+    let(:tester) { create(:user, name: 'テストユーザー', email: 'test@sample.com', test_user: 'true') }
+    let(:article_1) { create(:article, title: 'タイトル1', user: user_1, category: category_1) }
+    let(:article_2) { create(:article, title: 'タイトル2', user: user_1, category: category_1) }
+    let(:article_3) { create(:article, title: 'タイトル3', user: user_1, category: category_2) }
+    let(:article_test) { create(:article, title: 'テストユーザーの投稿', user: tester) }
+    let!(:category_1) { create(:category) }
+    let!(:category_2) { create(:category, name: '映像') }
+    let!(:category_3) { create(:category, name: '音楽') }
 
     describe '記事の新規投稿' do
       context '成功時の挙動' do
@@ -70,7 +70,7 @@ RSpec.describe 'Articles', type: :system do
         end
       end
     end
-      
+
     describe '記事の編集' do
       context 'ログインしている場合' do
         it '編集成功' do
@@ -129,7 +129,7 @@ RSpec.describe 'Articles', type: :system do
           click_link('削除')
           page.driver.browser.switch_to.alert.accept
           find("[data-testid='flash_message']")
-          expect(Article.count).to eq 0 
+          expect(Article.count).to eq 0
         end
       end
 
@@ -146,7 +146,7 @@ RSpec.describe 'Articles', type: :system do
           click_link('削除')
           page.driver.browser.switch_to.alert.accept
           find("[data-testid='flash_message']")
-          expect(Article.count).to eq 0 
+          expect(Article.count).to eq 0
         end
       end
 
@@ -173,6 +173,7 @@ RSpec.describe 'Articles', type: :system do
         article_3
         visit articles_path
       end
+
       context 'キーワード検索' do
         it '合致した記事だけ表示' do
           fill_in 'q[title_or_content_cont]', with: 'タイトル1'
