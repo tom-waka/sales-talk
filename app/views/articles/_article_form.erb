@@ -17,7 +17,7 @@
     <%= f.label :title, "タイトル(５０文字以内)" %>
     <%= f.text_area :title, class: "input-text", rows: 3, placeholder: "例：絶対に一度は見るべき映画を紹介します。" %>
     
-    <div class="counter"><%= @article.title.length%>文字/50文字</div>
+    <div class="title-counter"><%= @article.title.length%>文字/50文字</div>
 
     <%= f.label :content, "好きなモノについて紹介してください" %>
     <%= f.text_area :content,  rows: 25 , placeholder: "好きなモノの概要、おすすめポイント等"%>
