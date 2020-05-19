@@ -1,6 +1,6 @@
 $(document).on('turbolinks:load', function() {
   $(".input-text").on("keyup", function() {
-    let countNum = String($(this).val().length);
+    let countNum = $(this).val().length;
     $(".counter").text(countNum + "文字/50文字");
   });
 });
