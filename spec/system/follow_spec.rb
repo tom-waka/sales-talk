@@ -45,7 +45,7 @@ RSpec.describe 'Follow', type: :system do
           it 'フォロワーが表示されない' do
             visit followers_user_path(user_1)
             expect(page).to have_css '.no_following'
-          end          
+          end
         end
       end
 
