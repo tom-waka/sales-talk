@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe "UsersSessions", type: :system do
-
   describe 'ログイン・ログアウト機能の確認' do
     let(:user) { create(:user) }
     let(:admin_user) { create(:user, name: 'アドミン', email: 'admin@sample.com', admin: 'true') }
@@ -37,8 +36,9 @@ RSpec.describe "UsersSessions", type: :system do
         fill_in 'メールアドレス', with: user.email
         fill_in 'パスワード', with: 'foobar'
         click_button 'ログインする'
-        find("[data-testid='flash_message']")        
+        find("[data-testid='flash_message']")
       end
+
       it 'ログアウト成功' do
         visit user_path(user)
         click_link('ログアウト')
