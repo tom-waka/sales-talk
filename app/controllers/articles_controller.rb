@@ -16,6 +16,7 @@ class ArticlesController < ApplicationController
 
   def new
     @article = current_user.articles.build if logged_in?
+    @article.title = ""
   end
 
   def create
